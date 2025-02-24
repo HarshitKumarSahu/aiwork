@@ -1,3 +1,36 @@
 <%- include('partials/header') %>
     <h1>profile</h1>
+    <form action="/fileupload" id="uploadform" hidden method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+    </form>
+    <div class="profilehed">
+        <div class="profileimg" style="border-radius: 50%; height: 100px; width: 100px; background-color: aqua; position: relative; display: flex; align-items: center; justify-content: center;">
+            <img src="/images/uploads/<%=user.profileImage%>" alt="" style="width: 100%; object-fit: cover; position: absolute;">
+            <div class="uploadicon" style="width: 30px; height: 30px; background-color: aliceblue; z-index: 9;">
+                <i class="fa-solid fa-pen-to-square" style="position: absolute; z-index: 9;"></i>
+            </div>
+        </div>
+        <h1>Harshit Sahu</h1>
+        <h3>@username</h3>
+        <a href="/edit">Edit</a> <br>
+        <a href="/add">create new post</a>
+    </div> <br> <br>
+    <div class="cards">
+        <div class="card">
+            <div style="overflow: hidden; width: 200px; height: 300px;">
+                <img src="https://cdn.cosmos.so/b5cbe9ff-b99c-4518-924d-0ee8eb601bf1?format=webp&w=1168" alt="" style="width: 100%; height: 100%;">
+            </div>
+            <h2>all pins</h2>
+            <h3>28 pins</h3>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector(".uploadicon").addEventListener("click", function(){
+            document.querySelector("#uploadform input").click();
+        })
+        document.querySelector("#uploadform input").addEventListener("change", function() {
+            document.querySelector("#uploadform").submit();
+        })
+    </script>
 <%- include('partials/footer') %>
