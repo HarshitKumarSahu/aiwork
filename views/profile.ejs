@@ -5,7 +5,10 @@
     </form>
     <div class="profilehed">
         <div class="profileimg" style="border-radius: 50%; height: 100px; width: 100px; background-color: aqua; position: relative; display: flex; align-items: center; justify-content: center;">
-            <img src="/images/uploads/<%= user ? user.profileImage : 'https://cdn.cosmos.so/d5e83585-51c2-4548-ad97-9458bd50ec95?format=webp&w=554' %>" alt="" style="width: 100%; object-fit: cover; position: absolute;">
+            <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : 'https://cdn.cosmos.so/d5e83585-51c2-4548-ad97-9458bd50ec95?format=webp&w=554' %>" 
+            alt="Profile Image" 
+            style="width: 100%; height: 100%; object-fit: cover; position: absolute;">
+
             <div class="uploadicon" style="width: 30px; height: 30px; background-color: aliceblue; z-index: 9;">
                 <i class="fa-solid fa-pen-to-square" style="position: absolute; z-index: 9;"></i>
             </div>

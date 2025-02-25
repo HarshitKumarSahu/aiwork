@@ -89,6 +89,7 @@ router.post('/createpost', isLoggedIn , upload.single("postimage") , async funct
 router.post('/register', function(req, res, next) {
   const data = new userModel({
     username : req.body.username,
+    name : req.body.fullname,
     email : req.body.email,
     contact : req.body.contact,
   })
@@ -96,7 +97,7 @@ router.post('/register', function(req, res, next) {
   userModel.register(data, req.body.password)
     .then(function() {
       passport.authenticate("local")(req,res, function() {
-        res.render("profile" , {nav : true})
+        res.redirect("/profile")
       })
     })
 });
