@@ -1,0 +1,9 @@
+<%- include('partials/header') %>
+    <h1>Add new pin</h1> <br>
+    <form action="/createpost" method="post" enctype="multipart/form-data".>
+        <input type="file" name="postimage"> <br><br>
+        <input type="text" placeholder="title" name="title"><br><br>
+        <textarea name="description" placeholder="description"></textarea><br><br>
+        <input type="submit" value="create">
+    </form>
+<%- include('partials/footer') %>

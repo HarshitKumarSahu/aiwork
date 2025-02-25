@@ -5,7 +5,7 @@
     </form>
     <div class="profilehed">
         <div class="profileimg" style="border-radius: 50%; height: 100px; width: 100px; background-color: aqua; position: relative; display: flex; align-items: center; justify-content: center;">
-            <img src="/images/uploads/<%=user.profileImage%>" alt="" style="width: 100%; object-fit: cover; position: absolute;">
+            <img src="/images/uploads/<%=user?.profileImage%>" alt="" style="width: 100%; object-fit: cover; position: absolute;">
             <div class="uploadicon" style="width: 30px; height: 30px; background-color: aliceblue; z-index: 9;">
                 <i class="fa-solid fa-pen-to-square" style="position: absolute; z-index: 9;"></i>
             </div>
@@ -18,10 +18,10 @@
     <div class="cards">
         <div class="card">
             <div style="overflow: hidden; width: 200px; height: 300px;">
-                <img src="https://cdn.cosmos.so/b5cbe9ff-b99c-4518-924d-0ee8eb601bf1?format=webp&w=1168" alt="" style="width: 100%; height: 100%;">
+                <img src="/images/uploads/<%=user?.post[0]?.image%>" alt="" style="width: 100%; height: 100%;">
             </div>
             <h2>all pins</h2>
-            <h3>28 pins</h3>
+            <h3><%= user.post.length %> pins</h3>
         </div>
     </div>
 
