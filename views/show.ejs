@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+    <h1>pins</h1>
+    <div class="cards">
+        <% user.post.forEach(elem => { %>
+            <div class="card">
+                <div style="overflow: hidden; width: 200px; height: 300px;">
+                    <img src="/images/uploads/<%=elem.image%>" alt="" style="width: 100%; height: 100%;">
+                </div>
+                <!-- <a href="/show/posts"><h2>all pins</h2></a> -->
+                <h3><%= elem.title %></h3>
+            </div>
+            
+        <% }); %>
+    </div>
+<%- include('partials/footer') %>

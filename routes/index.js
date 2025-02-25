@@ -20,6 +20,22 @@ router.get('/register', function(req, res, next) {
   res.render('register', {nav : false}); 
 });
 
+router.get('/profile', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({ username: req.session.passport.user }).populate("post");
+  res.render('profile', { user, nav: true }); 
+});
+
+router.get('/show/posts', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({ username: req.session.passport.user }).populate("post");
+  res.render('show', { user, nav: true }); 
+});
+
+router.get('/feed', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({ username: req.session.passport.user })
+  const post = await postModel.find().populate("user");
+  res.render('feed', { user, post, nav: true }); 
+});
+
 // router.get('/profile', isLoggedIn , async function(req, res, next) {
 //   const user = await userModel
 //     .findOne({username: req.session.passport.user})
@@ -27,22 +43,22 @@ router.get('/register', function(req, res, next) {
 //   res.render('profile', {user, nav : true}); 
 // });
 
-router.get('/profile', isLoggedIn, async function(req, res, next) {
-  try {
-      // Fetch user data from the database
-      const user = await userModel.findOne({ username: req.session.passport.user }).populate("post");
+// router.get('/profile', isLoggedIn, async function(req, res, next) {
+//   try {
+//       // Fetch user data from the database
+//       const user = await userModel.findOne({ username: req.session.passport.user }).populate("post");
 
-      if (!user) {
-          return res.status(404).send("User not found");
-      }
+//       if (!user) {
+//           return res.status(404).send("User not found");
+//       }
 
-      // Pass user data to the template
-      res.render("profile", { user: user, nav: true });
-  } catch (error) {
-      console.error("Error fetching profile:", error);
-      res.status(500).send("Internal Server Error");
-  }
-});
+//       // Pass user data to the template
+//       res.render("profile", { user: user, nav: true });
+//   } catch (error) {
+//       console.error("Error fetching profile:", error);
+//       res.status(500).send("Internal Server Error");
+//   }
+// });
 
 router.get('/add', isLoggedIn , async function(req, res, next) {
   const user = await userModel.findOne({username: req.session.passport.user});
