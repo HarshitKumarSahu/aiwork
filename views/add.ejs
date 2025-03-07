@@ -7,52 +7,6 @@
         <input type="submit" value="create">
     </form> -->
 
-
-
-
-
-<!-- <h1>Add New Pin</h1> <br>
-
-<form action="/createpost" method="post" enctype="multipart/form-data">
-    <div>
-        <label>Choose Image Upload Method:</label><br>
-        <input type="radio" name="imageOption" value="upload" id="uploadOption" checked> 
-        <label for="uploadOption">Upload Image</label><br>
-
-        <input type="radio" name="imageOption" value="generate" id="generateOption"> 
-        <label for="generateOption">Generate with Text (AI)</label><br><br>
-    </div>
-
-    <div id="uploadSection">
-        <input type="file" name="postimage"><br><br>
-    </div>
-
-    <div id="generateSection" style="display:none;">
-        <input type="text" placeholder="Enter prompt for AI image" name="imagePrompt"><br><br>
-    </div>
-
-    <input type="text" placeholder="Title" name="title"><br><br>
-    <textarea name="description" placeholder="Description"></textarea><br><br>
-    <input type="submit" value="Create">
-</form>
-
-<script>
-    const uploadOption = document.getElementById('uploadOption');
-    const generateOption = document.getElementById('generateOption');
-    const uploadSection = document.getElementById('uploadSection');
-    const generateSection = document.getElementById('generateSection');
-
-    uploadOption.addEventListener('change', () => {
-        uploadSection.style.display = 'block';
-        generateSection.style.display = 'none';
-    });
-
-    generateOption.addEventListener('change', () => {
-        uploadSection.style.display = 'none';
-        generateSection.style.display = 'block';
-    });
-</script> -->
-
 <h1>Add new pin</h1><br>
 
 <form id="createPostForm" action="/createpost" method="post" enctype="multipart/form-data">
