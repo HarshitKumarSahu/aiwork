@@ -143,52 +143,114 @@ router.post('/fileupload', isLoggedIn , upload.single("image") , async function(
 
 
 
+// router.post('/createpost', isLoggedIn, upload.single("postimage"), async function(req, res, next) {
+//   const user = await userModel.findOne({ username: req.session.passport.user });
+
+//   let imageFilename = null;
+
+//   // Define the uploads directory path
+//   const uploadsDir = path.join(__dirname, '..', 'public', 'images', 'uploads');
+
+//   // Ensure the directory exists
+//   if (!fs.existsSync(uploadsDir)) {
+//       fs.mkdirSync(uploadsDir, { recursive: true });
+//   }
+
+//   if (req.body.imageOption === 'upload') {
+//       // Handle regular file upload
+//       if (req.file) {
+//           const uploadedFilePath = path.join(uploadsDir, req.file.filename);
+//           fs.renameSync(req.file.path, uploadedFilePath);  // Move file to correct folder
+//           imageFilename = req.file.filename;
+//       } else {
+//           return res.send("Please upload an image.");
+//       }
+//   } else if (req.body.imageOption === 'generate') {
+//       // Handle AI image generation using ClipDrop API
+//       const prompt = req.body.imagePrompt;
+//       try {
+//           const response = await axios.post(
+//               'https://clipdrop-api.co/text-to-image/v1',
+//               { prompt },
+//               {
+//                   headers: {
+//                       'x-api-key': '616a3ad3c476f9bf0bc03a0425aba73c9b7d640031eec228ab269ccc8f78d93b4ee8e5fc9968a00f556a61568255772c', // Replace with your actual API Key
+//                       'Content-Type': 'application/json'
+//                   },
+//                   responseType: 'arraybuffer'
+//               }
+//           );
+
+//           // Save generated image in the uploads folder
+//           imageFilename = `generated_${Date.now()}.png`;
+//           const generatedImagePath = path.join(uploadsDir, imageFilename);
+//           fs.writeFileSync(generatedImagePath, response.data);
+
+//       } catch (error) {
+//           console.error("Error generating image:", error);
+//           return res.send("Failed to generate image. Try again.");
+//       }
+//   }
+
+//   const post = await postModel.create({
+//       user: user._id,
+//       title: req.body.title,
+//       description: req.body.description,
+//       image: imageFilename
+//   });
+
+//   user.post.push(post._id);
+//   await user.save();
+//   res.redirect("/profile");
+// });
+
+router.post('/generate-image', async (req, res) => {
+  const { prompt } = req.body;
+  const uploadsDir = path.join(__dirname, '..', 'public', 'images', 'uploads');
+
+  if (!fs.existsSync(uploadsDir)) {
+      fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+
+  try {
+      const response = await axios.post(
+          'https://clipdrop-api.co/text-to-image/v1',
+          { prompt },
+          {
+              headers: {
+                  'x-api-key': '616a3ad3c476f9bf0bc03a0425aba73c9b7d640031eec228ab269ccc8f78d93b4ee8e5fc9968a00f556a61568255772c',
+                  'Content-Type': 'application/json'
+              },
+              responseType: 'arraybuffer'
+          }
+      );
+
+      const filename = `generated_${Date.now()}.png`;
+      const filePath = path.join(uploadsDir, filename);
+      fs.writeFileSync(filePath, response.data);
+
+      res.json({ success: true, filename });
+  } catch (error) {
+      console.error("Error generating image:", error);
+      res.json({ success: false });
+  }
+});
+
 router.post('/createpost', isLoggedIn, upload.single("postimage"), async function(req, res, next) {
   const user = await userModel.findOne({ username: req.session.passport.user });
 
   let imageFilename = null;
 
-  // Define the uploads directory path
-  const uploadsDir = path.join(__dirname, '..', 'public', 'images', 'uploads');
-
-  // Ensure the directory exists
-  if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
-  }
-
   if (req.body.imageOption === 'upload') {
-      // Handle regular file upload
       if (req.file) {
-          const uploadedFilePath = path.join(uploadsDir, req.file.filename);
-          fs.renameSync(req.file.path, uploadedFilePath);  // Move file to correct folder
           imageFilename = req.file.filename;
       } else {
           return res.send("Please upload an image.");
       }
   } else if (req.body.imageOption === 'generate') {
-      // Handle AI image generation using ClipDrop API
-      const prompt = req.body.imagePrompt;
-      try {
-          const response = await axios.post(
-              'https://clipdrop-api.co/text-to-image/v1',
-              { prompt },
-              {
-                  headers: {
-                      'x-api-key': '616a3ad3c476f9bf0bc03a0425aba73c9b7d640031eec228ab269ccc8f78d93b4ee8e5fc9968a00f556a61568255772c', // Replace with your actual API Key
-                      'Content-Type': 'application/json'
-                  },
-                  responseType: 'arraybuffer'
-              }
-          );
-
-          // Save generated image in the uploads folder
-          imageFilename = `generated_${Date.now()}.png`;
-          const generatedImagePath = path.join(uploadsDir, imageFilename);
-          fs.writeFileSync(generatedImagePath, response.data);
-
-      } catch (error) {
-          console.error("Error generating image:", error);
-          return res.send("Failed to generate image. Try again.");
+      imageFilename = req.body.generatedImageFilename;
+      if (!imageFilename) {
+          return res.send("Image generation failed or was not completed.");
       }
   }
 
@@ -203,7 +265,6 @@ router.post('/createpost', isLoggedIn, upload.single("postimage"), async functio
   await user.save();
   res.redirect("/profile");
 });
-
 
 
 
