@@ -320,36 +320,38 @@ nav .navright {
 .main .page5 {
   padding-top: 4vw;
   width: 100%;
+  /* height: 100vh; */
 }
 .main .page5 .page5top {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3vw 0;
+  padding: 3vw 0 3vw 0;
 }
 .main .page5 .page5top .page5topleft {
-  width: 20%;
+  width: 10%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   /* background-color: aqua; */
 }
 .main .page5 .page5top .page5topleft .page5topleftline {
-  width: 120px;
+  width: 100%;
   /* height: 50px; */
   border-top: 1.5px solid #303030;
 }
 .main .page5 .page5top .page5topright {
-  width: 80%;
+  width: 90%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  padding: 0 8vw;
   /* background-color: aqua; */
 }
 .main .page5 .page5top .page5topright h1 {
-  font-size: 5vw;
+  font-size: 6vw;
   line-height: 100%;
   color: #303030;
 }
@@ -368,33 +370,70 @@ nav .navright {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* margin-bottom: 2vw; */
   /* flex-direction: column; */
 }
 .main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft {
-  width: 20%;
+  width: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .cross {
-  width: 30px;
+  width: 2.5vw;
   height: 30px;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
-/* .main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft  .horizontal */
-
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .horizontal {
+  width: 100%;
+  height: 0.5vw;
+  background-color: #303030;
+  position: absolute;
+  border-radius: 3px;
+} 
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .vertical {
+  width: 100%;
+  height: 0.5vw;
+  background-color: #303030;
+  rotate: 90deg;
+  position: absolute;
+  border-radius: 3px;
+} 
 
 
 .main .page5 .page5bottom .page5bottomelems .page5bottomelemsright {
-  width: 80%;
+  width: 90%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  padding: 0 6vw 0 8vw ;
 }
-
-
-
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-toggle {
+  width: 100%;
+  height: 100%;
+  padding: 2vw 0;
+}
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-toggle h1 {
+  color: #303030;
+  font-size: 3vw;
+  letter-spacing: 1px;
+}
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-content {
+  width: 100%;
+  /* display: none; */
+  padding-bottom: 3vw;
+  margin-bottom: 3vw;
+}
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-content p {
+  font-family: lexend;
+  font-size: 1.5vw;
+  color: #696969;
+}
 
 
 
@@ -650,5 +689,137 @@ input[type=number] {
     letter-spacing: 2px;
   }
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .main .page5 {
+    padding-top: 7vw;
+    /* width: 100%; */
+    /* height: 0; */
+  }
+  /* .main .page5 .page5top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vw 0 3vw 0;
+  } */
+  .main .page5 .page5top .page5topleft {
+    /* width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; */
+    display: none;
+    /* background-color: aqua; */
+  }
+  /* .main .page5 .page5top .page5topleft .page5topleftline {
+    width: 100%;
+    /* height: 50px; 
+    border-top: 1.5px solid #303030;
+  } */
+  .main .page5 .page5top .page5topright {
+    width: 100%;
+    /* display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column; */
+    padding: 0 ;
+    /* background-color: aqua; */
+  }
+  .main .page5 .page5top .page5topright h1 {
+    font-size: 9vw;
+    /* line-height: 100%;
+    color: #303030; */
+  }
+  /* .main .page5 .page5top .page5topright h1:last-child {
+    color: #696969;
+  }
+  .main .page5 .page5bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  } */
+  /* .main .page5 .page5bottom .page5bottomelems {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-bottom: 2vw; 
+    /* flex-direction: column; 
+  } */
+  /* .main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+  .main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .cross {
+    width: 5vw;
+    height: 5vw;
+    /* background-color: blueviolet; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; */
+  }
+  /* .main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .horizontal {
+    width: 100%;
+    height: 5px;
+    background-color: #303030;
+    position: absolute;
+    border-radius: 3px;
+  } 
+  .main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .vertical {
+    width: 100%;
+    height: 5px;
+    background-color: #303030;
+    rotate: 90deg;
+    position: absolute;
+    border-radius: 3px;
+  }  */
+  
+  
+  /* .main .page5 .page5bottom .page5bottomelems .page5bottomelemsright {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 6vw 0 8vw ;
+  }
+  .main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-toggle {
+    width: 100%;
+    height: 100%;
+    padding: 2vw 0;
+  } */
+  .main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-toggle h1 {
+    /* color: #303030; */
+    font-size: 5vw;
+    /* letter-spacing: 1px; */
+  }
+  .main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-content {
+    width: 100%;
+    /* display: none; */
+    padding-bottom: 3vw;
+    margin-bottom: 25vw;
+  }
+  .main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-content p {
+    /* font-family: lexend; */
+    font-size: 4vw;
+    /* color: #696969; */
+  }
 
 }
