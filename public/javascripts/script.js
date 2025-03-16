@@ -4,3 +4,5 @@ gsap.to(".marquee", {
     ease: "linear",
     repeat: -1 // Infinite loop
 });
+
+

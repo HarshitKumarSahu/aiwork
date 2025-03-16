@@ -10,11 +10,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 html, body {
   width: 100%;
   height: 100%;
   background-color: #E5E5E5;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 a {
   text-decoration: none;
@@ -121,7 +126,7 @@ nav .navright {
 .main .page1 .page1line2 h1 {
   font-size: 9vw;
   line-height: 100%;
-  color: #666666;
+  color: #696969;
   letter-spacing: 3px;
 }
 .main .page1 .page1line3 {
@@ -299,6 +304,103 @@ nav .navright {
   font-family: grifter;
   letter-spacing: 2px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main .page5 {
+  padding-top: 4vw;
+  width: 100%;
+}
+.main .page5 .page5top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3vw 0;
+}
+.main .page5 .page5top .page5topleft {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* background-color: aqua; */
+}
+.main .page5 .page5top .page5topleft .page5topleftline {
+  width: 120px;
+  /* height: 50px; */
+  border-top: 1.5px solid #303030;
+}
+.main .page5 .page5top .page5topright {
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: aqua; */
+}
+.main .page5 .page5top .page5topright h1 {
+  font-size: 5vw;
+  line-height: 100%;
+  color: #303030;
+}
+.main .page5 .page5top .page5topright h1:last-child {
+  color: #696969;
+}
+.main .page5 .page5bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.main .page5 .page5bottom .page5bottomelems {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* flex-direction: column; */
+}
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .cross {
+  width: 30px;
+  height: 30px;
+  background-color: blueviolet;
+}
+/* .main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft  .horizontal */
+
+
+
+.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright {
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
