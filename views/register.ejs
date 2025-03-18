@@ -1,5 +1,5 @@
 <%- include('partials/header') %>
-    <h1>Create new Account</h1>
+    <!-- <h1>Create new Account</h1>
     <form action="/register" method="post">
         <input type="text" name="username" placeholder="Username"> <br><br>
         <input type="text" name="fullname" placeholder="full name"> <br><br>
@@ -8,5 +8,29 @@
         <input type="password" name="password" placeholder="Password"> <br><br>
         <input type="submit" value="create">
     </form> <br>
-    <a href="/login">Already have an account ?</a>
+    <a href="/login">Already have an account ?</a> -->
+
+
+
+
+
+    <div class="loginregistercontainer">
+        <div class="logregcont">
+            <div class="logo">
+                <a href="/"><img src="/images/logo/logodark.png" alt=""></a>
+            </div>
+            <h1>Create new Account</h1>
+            <form action="/register" method="post">
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="fullname" placeholder="Full Name"> 
+                <input type="email" name="email" placeholder="Email">
+                <input type="number" name="contact" placeholder="Contact"> 
+                <input type="password" name="password" placeholder="Password"> 
+                <input class="submit" type="submit" value="Create">
+            </form>
+            <p>Already have an AI.WORK account?</p>
+            <!-- <a class="lastbutton" href="/register">Create new account</a> -->
+            <a class="lastbutton" href="/login"><input class="submit" type="submit" value="Sign in"></a>
+        </div>
+    </div>
 <%- include('partials/footer') %>
