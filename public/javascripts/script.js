@@ -42,3 +42,7 @@ document.querySelectorAll(".page5bottomelems").forEach((elem) => {
     });
 });
 
+
+
+
+
