@@ -42,10 +42,23 @@ router.get('/feed', isLoggedIn, async function(req, res, next) {
 });
 
 
-router.get('/add', isLoggedIn , async function(req, res, next) {
-  const user = await userModel.findOne({username: req.session.passport.user});
-  res.render('add', {user, nav : true}); 
+// router.get('/add', isLoggedIn , async function(req, res, next) {
+//   const user = await userModel.findOne({username: req.session.passport.user});
+//   res.render('add', {user, nav : true}); 
+// });
+
+// Upload form route
+router.get('/upload', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  res.render('upload', { user, nav: true });
 });
+
+// Generate form route
+router.get('/generate', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  res.render('generate', { user, nav: true });
+});
+
 
 router.post('/fileupload', isLoggedIn , upload.single("image") , async function(req, res, next) {
   const user = await userModel.findOne({username: req.session.passport.user});
@@ -118,9 +131,77 @@ router.post('/createpost', isLoggedIn, upload.single("postimage"), async functio
   res.redirect("/profile");
 });
 
+// router.post('/createpost', isLoggedIn, upload.single("postimage"), async function(req, res, next) {
+//   console.log("File uploaded:", req.file); // Debug log
 
+//   if (!req.file) {
+//       console.log("Error: No file uploaded.");
+//       return res.send("File upload failed.");
+//   }
 
+//   const user = await userModel.findOne({ username: req.session.passport.user });
 
+//   const post = await postModel.create({
+//       user: user._id,
+//       title: req.body.title,
+//       description: req.body.description,
+//       image: req.file.filename
+//   });
+
+//   user.post.push(post._id);
+//   await user.save();
+  
+//   console.log("Post created with image:", req.file.filename);
+//   res.redirect("/profile");
+// });
+
+router.post('/createpost', isLoggedIn, upload.single("postimage"), async function (req, res, next) {
+  console.log("✅ Received request to create post.");
+  console.log("Form Type:", req.body.imageOption);
+
+  const user = await userModel.findOne({ username: req.session.passport.user });
+
+  let imageFilename = null;
+
+  // Handle Image Upload
+  if (req.body.imageOption === 'upload') {
+      if (req.file) {
+          imageFilename = req.file.filename;
+          console.log("✅ Uploaded Image:", imageFilename);
+      } else {
+          console.log("❌ Error: No file uploaded.");
+          return res.send("Please upload an image.");
+      }
+  }
+  // Handle AI-Generated Image
+  else if (req.body.imageOption === 'generate') {
+      imageFilename = req.body.generatedImageFilename;
+      if (!imageFilename) {
+          console.log("❌ Error: No AI-generated image provided.");
+          return res.send("Image generation failed or was not completed.");
+      }
+      console.log("✅ Generated Image:", imageFilename);
+  } 
+  // Invalid imageOption
+  else {
+      console.log("❌ Error: Invalid imageOption.");
+      return res.send("Invalid image option.");
+  }
+
+  // Create new post with selected image
+  const post = await postModel.create({
+      user: user._id,
+      title: req.body.title,
+      description: req.body.description,
+      image: imageFilename
+  });
+
+  user.post.push(post._id);
+  await user.save();
+
+  console.log("✅ Post created successfully with image:", imageFilename);
+  res.redirect("/profile");
+});
 
 
 

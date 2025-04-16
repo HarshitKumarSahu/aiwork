@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+<h1>Generate New Pin with AI</h1><br>
+
+<form id="generatePostForm" action="/createpost" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="imageOption" value="generate"> <!-- Hidden field to indicate generation -->
+
+    <input type="text" id="imagePrompt" name="imagePrompt" placeholder="Enter prompt for AI image" required><br><br>
+    <button type="button" onclick="generateImage()">Generate Image</button><br><br>
+
+    <div id="imagePreviewContainer" style="display:none;">
+        <p>Generated Image Preview:</p>
+        <img id="generatedImagePreview" src="" alt="Generated Image" style="max-width: 100%; height: auto;"><br><br>
+    </div>
+
+    <!-- Hidden input to store generated image filename -->
+    <input type="hidden" name="generatedImageFilename" id="generatedImageFilename">
+
+    <input type="text" placeholder="Title" name="title" required><br><br>
+    <textarea name="description" placeholder="Description"></textarea><br><br>
+    <input type="submit" value="Create Post">
+</form>
+
+<script>
+async function generateImage() {
+    const prompt = document.getElementById('imagePrompt').value;
+    if (!prompt.trim()) {
+        alert('Please enter a prompt!');
+        return;
+    }
+
+    try {
+        const response = await fetch('/generate-image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.getElementById('generatedImagePreview').src = `/images/uploads/${data.filename}`;
+            document.getElementById('generatedImageFilename').value = data.filename;
+            document.getElementById('imagePreviewContainer').style.display = 'block';
+        } else {
+            alert('Failed to generate image. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error generating image:', error);
+        alert('Something went wrong!');
+    }
+}
+</script>
+
+<%- include('partials/footer') %>
