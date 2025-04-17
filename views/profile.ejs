@@ -1,5 +1,5 @@
 <%- include('partials/header') %>
-    <h1>profile</h1>
+    <!-- <h1>profile</h1>
     <form action="/fileupload" id="uploadform" hidden method="post" enctype="multipart/form-data">
         <input type="file" name="image">
     </form>
@@ -26,6 +26,57 @@
             <a href="/show/posts"><h2>all pins</h2></a>
             <h3><%= user.post.length %> pins</h3>
         </div>
+    </div> -->
+
+    <div class="profile">
+        <!-- <h1>profile</h1> -->
+        <form action="/fileupload" id="uploadform" hidden method="post" enctype="multipart/form-data">
+            <input type="file" name="image">
+        </form>
+        <div class="profileHead">
+            <div class="top">
+                <div class="profileimg">
+                    <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : 'https://cdn.cosmos.so/d5e83585-51c2-4548-ad97-9458bd50ec95?format=webp&w=554' %>" 
+                    alt="Profile Image">
+                    <div class="uploadicon">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                </div>
+                <div class="profileHeading">
+                    <h1><%= user ? user.name : 'Guest' %></h1>
+                    <h3><%= user ? '@' + user.username : '@GuestUser' %></h3>
+                </div>
+            </div>
+            <div class="profileButton">
+                <a href="/edit">Edit Profile</a> <br>
+                <a href="/upload">Create Art</a>
+            </div>
+        </div>
+        <!-- <div class="cards">
+            <div class="card">
+                <div style="overflow: hidden; width: 200px; height: 300px;">
+                    <img src="/images/uploads/<%=user?.post[0]?.image%>" alt="" style="width: 100%; height: 100%;">
+                </div>
+                <a href="/show/posts"><h2>all pins</h2></a>
+                <h3><%= user.post.length %> pins</h3>
+            </div>
+        </div> -->
+        <div class="profileArtContent">
+            <h1>Your Arts</h1>
+            <div class="cards">
+                <% user.post.forEach(elem => { %>
+                    <div class="card">
+                        <div>
+                            <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt="">
+                        </div>
+                        <!-- <a href="/show/posts"><h2>all pins</h2></a> -->
+                        <h3><%= elem.title %></h3>
+                        <p><%= elem.description %></p>
+                        <button class="downloadBtn">Download Art</button>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -35,5 +86,17 @@
         document.querySelector("#uploadform input").addEventListener("change", function() {
             document.querySelector("#uploadform").submit();
         })
+
+        document.querySelectorAll('.downloadBtn').forEach((btn, index) => {
+            btn.addEventListener('click', function () {
+                const imageUrl = document.querySelectorAll('.profileImage')[index].src;
+                const a = document.createElement('a');
+                a.href = imageUrl;
+                a.download = `AI.WORK_image_${index + 1}.jpg`; // Unique filename for each image
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+        });
     </script>
 <%- include('partials/footer') %>

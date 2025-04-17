@@ -4,6 +4,8 @@
 # Ignore node modules
 node_modules/
 
+public/images/uploads/
+
 # Ignore log files
 *.log
 npm-debug.log*

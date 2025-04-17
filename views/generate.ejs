@@ -42,7 +42,7 @@
                         <input type="text" id="imagePrompt" name="imagePrompt" placeholder="Enter prompt for AI Art" required>
                         <div class="genrateButtons"> 
                             <button type="button" onclick="generateImage()">Generate</button>
-                            <button type="button">Surprise me</button>
+                            <button type="button" id="surpriseBtn">Surprise me</button>
                         </div>
                     </div>
 
@@ -59,39 +59,41 @@
         </div>
     </div>
 </div>
-
+<script type="module" src="/javascripts/main.js"></script>
 <script>
-async function generateImage() {
-    const prompt = document.getElementById('imagePrompt').value;
-    // const preview = document.getElementById('imagePreview');
-    if (!prompt.trim()) {
-        alert('Please enter a prompt!');
-        return;
-    }
-
-    try {
-        const response = await fetch('/generate-image', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ prompt })
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            document.getElementById('generatedImagePreview').src = `/images/uploads/${data.filename}`;
-            document.getElementById('generatedImageFilename').value = data.filename;
-            document.getElementById('generatedImagePreview').style.display = 'flex';
-        } else {
-            alert('Failed to generate image. Please try again.');
+    async function generateImage() {
+        const prompt = document.getElementById('imagePrompt').value;
+        // const preview = document.getElementById('imagePreview');
+        if (!prompt.trim()) {
+            alert('Please enter a prompt!');
+            return;
         }
-    } catch (error) {
-        console.error('Error generating image:', error);
-        alert('Something went wrong!');
+
+        try {
+            const response = await fetch('/generate-image', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                document.getElementById('generatedImagePreview').src = `/images/uploads/${data.filename}`;
+                document.getElementById('generatedImageFilename').value = data.filename;
+                document.getElementById('generatedImagePreview').style.display = 'flex';
+            } else {
+                alert('Failed to generate image. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error generating image:', error);
+            alert('Something went wrong!');
+        }
     }
-}
+
+
 </script>
 
 <%- include('partials/footer') %>
