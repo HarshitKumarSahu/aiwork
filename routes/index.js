@@ -30,16 +30,31 @@ router.get('/profile', isLoggedIn, async function(req, res, next) {
   res.render('profile', { user, nav: true }); 
 });
 
-router.get('/show/posts', isLoggedIn, async function(req, res, next) {
-  const user = await userModel.findOne({ username: req.session.passport.user }).populate("post");
-  res.render('show', { user, nav: true }); 
-});
+// router.get('/show/posts', isLoggedIn, async function(req, res, next) {
+//   const user = await userModel.findOne({ username: req.session.passport.user }).populate("post");
+//   res.render('show', { user, nav: true }); 
+// });
 
 router.get('/feed', isLoggedIn, async function(req, res, next) {
   const user = await userModel.findOne({ username: req.session.passport.user })
   const post = await postModel.find().populate("user");
-  res.render('feed', { user, post, nav: true }); 
+
+  function shuffleArray(array) {
+    return array
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+  }
+  
+  // Assuming `post` is your array of posts
+  const shuffledPosts = shuffleArray(post);
+
+
+  res.render('feed', { user, post: shuffledPosts, nav: true }); 
 });
+
+
+
 
 
 // router.get('/add', isLoggedIn , async function(req, res, next) {

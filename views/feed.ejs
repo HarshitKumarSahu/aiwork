@@ -1,5 +1,5 @@
 <%- include('partials/header') %>
-<h1>pins</h1>
+<!-- <h1>pins</h1>
 <div class="cards">
     <% post.forEach(elem => { %>
         <div class="card">
@@ -11,6 +11,25 @@
             <button class="downloadBtn" style="margin-top: 10px; padding: 8px 12px; cursor: pointer;">Download Image</button>
         </div>
     <% }); %>
+</div> -->
+<div class="profile">
+<div class="profileArtContent">
+    <!-- <h1>Your Arts</h1> -->
+    <div class="cards">
+        <% post.forEach(elem => { %>
+            <div class="card">
+                <div>
+                    <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt="">
+                </div>
+                <!-- <a href="/show/posts"><h2>all pins</h2></a> -->
+                <h4>@<%= elem.user.username %></h4>
+                <h3><%= elem.title %></h3>
+                <!-- <p><%= elem.description %></p> -->
+                <button class="downloadBtn">Download Art</button>
+            </div>
+        <% }); %>
+    </div>
+</div>
 </div>
 
 <script>
@@ -26,4 +45,7 @@
         });
     });
 </script>
+
+
 <%- include('partials/footer') %>
+
