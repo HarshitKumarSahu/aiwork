@@ -218,6 +218,29 @@ router.post('/createpost', isLoggedIn, upload.single("postimage"), async functio
   res.redirect("/profile");
 });
 
+//edit
+router.get('/editprofile', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  res.render('editprofile', { user, nav: true });
+});
+
+router.post('/editprofile', isLoggedIn, async function(req, res, next) {
+  try {
+    const user = await userModel.findOne({ username: req.session.passport.user });
+
+    user.name = req.body.name || user.name;
+    user.username = req.body.username || user.username;
+    user.email = req.body.email || user.email;
+    user.contact = req.body.contact || user.contact;
+
+    await user.save();
+
+    res.redirect('/profile');
+  } catch (err) {
+    console.error("Error updating profile:", err);
+    res.send("An error occurred while updating profile.");
+  }
+});
 
 
 
