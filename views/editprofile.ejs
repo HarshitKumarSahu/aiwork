@@ -16,5 +16,9 @@
 
   <button type="submit">Update Profile</button>
 </form>
+<form action="/deleteuser" method="POST" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.')">
+  <button type="submit" class="btn btn-danger">Delete My Account</button>
+</form>
+
 
 <%- include("partials/footer") %>

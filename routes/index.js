@@ -243,6 +243,39 @@ router.post('/editprofile', isLoggedIn, async function(req, res, next) {
   }
 });
 
+// Delete user and all their posts
+router.post('/deleteuser', isLoggedIn, async function (req, res, next) {
+  try {
+    const user = await userModel.findOne({ username: req.session.passport.user });
+
+    // Delete all associated posts
+    const userPosts = await postModel.find({ user: user._id });
+    for (let post of userPosts) {
+      // Delete image from disk
+      const imagePath = path.join(__dirname, '..', 'public', 'images', 'uploads', post.image);
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
+
+    // Remove posts from database
+    await postModel.deleteMany({ user: user._id });
+
+    // Delete user
+    await userModel.findByIdAndDelete(user._id);
+
+    // Logout the user
+    req.logout(function(err) {
+      if (err) return next(err);
+      res.redirect('/');
+    });
+  } catch (err) {
+    console.error("Error deleting user and posts:", err);
+    res.send("Something went wrong while deleting user.");
+  }
+});
+
+
 // Show editPost form
 router.get('/editpost/:id', isLoggedIn, async (req, res) => {
   const post = await postModel.findById(req.params.id);

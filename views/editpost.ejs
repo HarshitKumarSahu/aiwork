@@ -10,5 +10,8 @@
     <button type="submit">Update Post</button>
 </form>
   
+<form action="/deletepost/<%= post._id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+    <button type="submit">Delete Art</button>
+</form>
 
 <%- include("partials/footer") %>

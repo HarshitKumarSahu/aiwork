@@ -848,13 +848,33 @@ nav .navright {
   letter-spacing: 1.5px;
   font-size: 1vw;
   border-radius: 8px;
-  padding: 0.25vw 1.65vw;
+  /* padding: 0.25vw 0.05vw; */
+  padding:0.5vw 0.25vw 0.25vw 0.25vw;
   text-align: center;
-  width: 100%;
+  width: 60%;
   margin-top: 10px;
 }
-
-
+.postbutton {
+  width: 100%;
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.postbutton a {
+  background-color: transparent;
+  color: #303030;
+  border: 1px solid #303030;
+  font-family: grifter;
+  letter-spacing: 1.5px;
+  font-size: 1vw;
+  border-radius: 8px;
+  padding:0.75vw 0.25vw 0.5vw 0.25vw;
+  text-align: center;
+  width: 40%;
+  margin-top: 10px;
+}
 
 
 
@@ -1565,6 +1585,24 @@ input[type=number] {
     margin: 6vw 0;
     /* text-transform: uppercase; */
     /* color: #303030; */
+  }
+
+  .postbutton a {
+    /* background-color: transparent; */
+    /* color: #303030; */
+    /* border: 1px solid #303030; */
+    /* font-family: grifter; */
+    /* letter-spacing: 1.5px; */
+    /* font-size: 5vw; */
+    /* border-radius: 8px; */
+    /* padding:0.75vw 0.25vw 0.5vw 0.25vw; */
+    /* text-align: center; */
+    /* width: 40%; */
+    /* margin-top: 10px; */
+    letter-spacing: 3px;
+    font-size: 4vw;
+    border-radius: 6px;
+    padding: 3vw 1.5vw 2.25vw 1.5vw;
   }
   
 
