@@ -218,12 +218,13 @@ router.post('/createpost', isLoggedIn, upload.single("postimage"), async functio
   res.redirect("/profile");
 });
 
-//edit
+// Show editprofile form
 router.get('/editprofile', isLoggedIn, async function(req, res, next) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   res.render('editprofile', { user, nav: true });
 });
 
+// Handle editprofile form
 router.post('/editprofile', isLoggedIn, async function(req, res, next) {
   try {
     const user = await userModel.findOne({ username: req.session.passport.user });
@@ -241,6 +242,41 @@ router.post('/editprofile', isLoggedIn, async function(req, res, next) {
     res.send("An error occurred while updating profile.");
   }
 });
+
+// Show editPost form
+router.get('/editpost/:id', isLoggedIn, async (req, res) => {
+  const post = await postModel.findById(req.params.id);
+  res.render('editpost', { post, nav: true });
+});
+
+// Handle editPost form
+router.post('/editpost/:id', isLoggedIn, async (req, res) => {
+  const { title, description } = req.body;
+  await postModel.findByIdAndUpdate(req.params.id, { title, description });
+  res.redirect('/profile');
+});
+
+// handle deletePost 
+router.post('/deletepost/:id', isLoggedIn, async (req, res) => {
+  const post = await postModel.findById(req.params.id);
+
+  // Remove post ref from user
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  user.post.pull(post._id);
+  await user.save();
+
+  // Delete image file if needed
+  const imagePath = path.join(__dirname, '..', 'public', 'images', 'uploads', post.image);
+  if (fs.existsSync(imagePath)) {
+    fs.unlinkSync(imagePath);
+  }
+
+  // Delete post
+  await postModel.findByIdAndDelete(req.params.id);
+
+  res.redirect('/profile');
+});
+
 
 
 

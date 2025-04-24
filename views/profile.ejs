@@ -72,6 +72,10 @@
                         <!-- <a href="/show/posts"><h2>all pins</h2></a> -->
                         <h3><%= elem.title %></h3>
                         <p><%= elem.description %></p>
+                        <a href="/editpost/<%= elem._id %>">Edit Art</a>
+                        <form action="/deletepost/<%= elem._id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                            <button type="submit">Delete Art</button>
+                        </form>
                         <button class="downloadBtn">Download Art</button>
                     </div>
                 <% }); %>
