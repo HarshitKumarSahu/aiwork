@@ -1,17 +1,32 @@
 <%- include("partials/header") %>
-<h2>Edit Post</h2>
-<form action="/editpost/<%= post._id %>" method="POST">
-    <label>Title:</label>
-    <input type="text" name="title" value="<%= post.title %>" required />
-  
-    <label>Description:</label>
-    <textarea name="description" required><%= post.description %></textarea>
-  
-    <button type="submit">Update Post</button>
-</form>
-  
-<form action="/deletepost/<%= post._id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
-    <button type="submit">Delete Art</button>
-</form>
+<div class="edit">
+    <h1>Edit Art</h1>
+    <div class="editcontainer">
+      <div class="editleft">
+        <div class="postimg">
+            <img src="/images/uploads/<%= post.image %>" alt="Art Image"/>
+        </div>
+      </div>
+      <div class="editright">
+        <!-- edit -->
+        <form action="/editpost/<%= post._id %>" method="POST">
+            <h2>Username : <span><%= user.username %></span></h2>
+            <div class="formline">
+                <label>Title:</label>
+                <input type="text" name="title" value="<%= post.title %>" required />
+            </div>
+            <div class="formline">
+                <label>Description:</label>
+                <textarea name="description" required><%= post.description %></textarea>
+            </div>
+            <button type="submit">Update Art</button>
+        </form>
+        <!-- delete -->
+        <form class="delete" action="/deletepost/<%= post._id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+            <button type="submit">Delete Art</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
 <%- include("partials/footer") %>

@@ -1,24 +1,43 @@
 <%- include("partials/header") %>
 
-<h2>Edit Profile</h2>
-<form action="/editprofile" method="POST">
-  <label>Name:</label>
-  <input type="text" name="name" value="<%= user.name %>" required>
-
-  <label>Username:</label>
-  <input type="text" name=username" value="<%= user.username %>" required>
-
-  <label>Email:</label>
-  <input type="email" name="email" value="<%= user.email %>" required>
-
-  <label>Contact:</label>
-  <input type="text" name="contact" value="<%= user.contact %>" required>
-
-  <button type="submit">Update Profile</button>
-</form>
-<form action="/deleteuser" method="POST" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.')">
-  <button type="submit" class="btn btn-danger">Delete My Account</button>
-</form>
-
+<div class="edit">
+  <h1>Edit Profile</h1>
+  <div class="editcontainer">
+    <div class="editleft">
+      <div class="profileimg">
+        <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : 'https://cdn.cosmos.so/d5e83585-51c2-4548-ad97-9458bd50ec95?format=webp&w=554' %>" 
+        alt="Profile Image">
+      </div>
+    </div>
+  
+    <div class="editright">
+      <!-- edit -->
+      <form action="/editprofile" method="POST">
+        <div class="formline">
+          <label>Name:</label>
+          <input type="text" name="name" value="<%= user.name %>" required>
+        </div>
+          <div class="formline">
+          <label>Username:</label>
+        <input type="text" name=username" value="<%= user.username %>" required>
+        </div>
+        <div class="formline">
+          <label>Email:</label>
+          <input type="email" name="email" value="<%= user.email %>" required>
+        </div>
+        <div class="formline">
+          <label>Contact:</label>
+          <input type="text" name="contact" value="<%= user.contact %>" required>
+        </div>
+      
+        <button type="submit">Update Profile</button>
+      </form>
+      <!-- delete -->
+      <form class="delete" action="/deleteuser" method="POST" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.')">
+        <button type="submit" class="btn btn-danger">Delete My Account</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <%- include("partials/footer") %>
