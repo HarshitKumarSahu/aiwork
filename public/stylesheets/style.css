@@ -1008,11 +1008,41 @@ nav .navright {
 } 
 
 
-
-
-
-
-
+.error {
+  width: 100%;
+  height: 100%;
+  /* background-color: #303030; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1vw;
+}
+.error .errstatus h1 {
+  font-size: 25vw;
+  /* line-height: 0%; */
+  color: #303030;
+  background: -webkit-linear-gradient(#303030, #D1D1D1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.error .errmsg h1{
+  font-size: 4vw;
+  margin-top: -4vw;
+  color: #303030;
+}
+.error a{
+  width: 250px;
+  text-align: center;
+  padding: 1vw 0.75vw 0.75vw 0.75vw;
+  font-size: 1.5vw;
+  border-radius: 8px;
+  color: #E5E5E5;
+  background-color: #303030;
+  border: 1px solid #303030;
+  font-family: grifter;
+  letter-spacing: 1.5px;
+} 
 
 
 /* Chrome, Safari, Edge, Opera */
@@ -1751,140 +1781,179 @@ input[type=number] {
 
 
 
-.edit {
-  /* width: 100%; */
-  /* height: auto; */
-  padding: 2vw 5vw;
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: flex-start; */
-  /* flex-direction: column; */
-  /* font-family: grifter; */
-}
-.editcontainer {
-  /* display: flex; */
-  /* width: 100%; */
-  /* height: auto; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  gap: 4vw;
-  /* background-color: aqua; */
-  flex-direction: column;
-}
-.editleft {
-  /* width: 40%; */
-  /* height: 100%; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* background-color: #666666; */
-}
-.editleft .profileimg {
-  width: 30vw;
-  height: 30vw;
-  /* border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid #303030; */
-}
-.editright {
-  /* width: 50%; */
-  /* height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column; */
-  gap: 3vw;
-}
+  .edit {
+    /* width: 100%; */
+    /* height: auto; */
+    padding: 2vw 5vw;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: flex-start; */
+    /* flex-direction: column; */
+    /* font-family: grifter; */
+  }
+  .editcontainer {
+    /* display: flex; */
+    /* width: 100%; */
+    /* height: auto; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    gap: 4vw;
+    /* background-color: aqua; */
+    flex-direction: column;
+  }
+  .editleft {
+    /* width: 40%; */
+    /* height: 100%; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* background-color: #666666; */
+  }
+  .editleft .profileimg {
+    width: 30vw;
+    height: 30vw;
+    /* border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #303030; */
+  }
+  .editright {
+    /* width: 50%; */
+    /* height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column; */
+    gap: 3vw;
+  }
 
-.edit h1 {
-  /* color: #303030; */
-  font-size: 8vw;
-  /* font-family: grifter; */
-  /* margin: 2vw 0; */
-}
-.edit form {
-  width: 310px;
-  /* display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column; */
-  gap: 4vw;
-  /* background-color: aqua; */
-  /* padding: 0 2vw; */
-}
-.edit form .formline {
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  /* flex-direction: column;
-  width: 100%; */
-  gap: 10px;
-}
-.edit form .formline label {
-  font-size: 5vw;
-  color: #303030;
-}
-.edit form input {
-  /* width: 90%;
-  padding: 0.75vw;
-  font-size: 1.5vw;
-  border-radius: 8px;
-  border: 4px solid #d3d3d3;
-  background-color: #d1d1d1;
-  font-family: lexend;
-  color: #757575; */
-  padding: 2vw;
-  font-size: 5vw;
-  border-radius: 6px;
-  border: 8px solid #d3d3d3;
-}
-.edit form textarea {
-  /* width: 100%;
-  padding: 0.75vw;
-  font-size: 1.5vw;
-  border-radius: 8px;
-  border: 4px solid #d3d3d3;
-  background-color: #d1d1d1;
-  font-family: lexend;
-  color: #757575;
-  field-sizing: content; */
-  padding: 2vw;
-  font-size: 5vw;
-  border-radius: 6px;
-  border: 8px solid #d3d3d3;
-}
-.edit button {
-  /* width: 100%;
-  padding: 0.75vw;
-  font-size: 1.5vw;
-  border-radius: 8px;
-  background-color: #E5E5E5;
-  color: #303030;
-  border: 1px solid #303030;
-  font-family: grifter;
-  letter-spacing: 1.5px;
-  margin-top: 1vw; */
-  /* width: 90%; */
-  /* padding: 2vw; */
-  padding: 2.95vw 2vw 2vw 2vw;
-  font-size: 5vw;
-  border-radius: 8px;
-  background-color: #E5E5E5;
-  color: #303030;
-  border: 1px solid #303030;
-  font-family: grifter;
-  letter-spacing: 1.5px;
-} 
-.edit .delete button {
-  /* width: 100%; */
-  padding: 2.95vw 2vw 2vw 2vw;
-  font-size: 5vw;
-  border-radius: 8px;
-  color: #E5E5E5;
-  background-color: #303030;
-  border: 1px solid #303030;
-  font-family: grifter;
-  letter-spacing: 1.5px;
-} 
+  .edit h1 {
+    /* color: #303030; */
+    font-size: 8vw;
+    /* font-family: grifter; */
+    /* margin: 2vw 0; */
+  }
+  .edit form {
+    width: 310px;
+    /* display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column; */
+    gap: 4vw;
+    /* background-color: aqua; */
+    /* padding: 0 2vw; */
+  }
+  .edit form .formline {
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column;
+    width: 100%; */
+    gap: 10px;
+  }
+  .edit form .formline label {
+    font-size: 5vw;
+    color: #303030;
+  }
+  .edit form input {
+    /* width: 90%;
+    padding: 0.75vw;
+    font-size: 1.5vw;
+    border-radius: 8px;
+    border: 4px solid #d3d3d3;
+    background-color: #d1d1d1;
+    font-family: lexend;
+    color: #757575; */
+    padding: 2vw;
+    font-size: 5vw;
+    border-radius: 6px;
+    border: 8px solid #d3d3d3;
+  }
+  .edit form textarea {
+    /* width: 100%;
+    padding: 0.75vw;
+    font-size: 1.5vw;
+    border-radius: 8px;
+    border: 4px solid #d3d3d3;
+    background-color: #d1d1d1;
+    font-family: lexend;
+    color: #757575;
+    field-sizing: content; */
+    padding: 2vw;
+    font-size: 5vw;
+    border-radius: 6px;
+    border: 8px solid #d3d3d3;
+  }
+  .edit button {
+    /* width: 100%;
+    padding: 0.75vw;
+    font-size: 1.5vw;
+    border-radius: 8px;
+    background-color: #E5E5E5;
+    color: #303030;
+    border: 1px solid #303030;
+    font-family: grifter;
+    letter-spacing: 1.5px;
+    margin-top: 1vw; */
+    /* width: 90%; */
+    /* padding: 2vw; */
+    padding: 2.95vw 2vw 2vw 2vw;
+    font-size: 5vw;
+    border-radius: 8px;
+    background-color: #E5E5E5;
+    color: #303030;
+    border: 1px solid #303030;
+    font-family: grifter;
+    letter-spacing: 1.5px;
+  } 
+  .edit .delete button {
+    /* width: 100%; */
+    padding: 2.95vw 2vw 2vw 2vw;
+    font-size: 5vw;
+    border-radius: 8px;
+    color: #E5E5E5;
+    background-color: #303030;
+    border: 1px solid #303030;
+    font-family: grifter;
+    letter-spacing: 1.5px;
+  } 
+
+
+
+
+  .error {
+    /* width: 100%;
+    height: 100%; */
+    /* background-color: #303030; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; */
+    gap: 4vw;
+
+  }
+  /* .errstatus, .errmsg {
+    width: 100%;
+    text-align: center;
+  } */
+  .error .errstatus h1 {
+    font-size: 38vw ;
+    /* line-height: 0%; */
+    /* color: #303030;
+    background: -webkit-linear-gradient(#303030, #D1D1D1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+  }
+  .error .errmsg h1{
+    font-size: 10vw;
+    margin-top: -6vw;
+    /* color: #303030; */
+  }
+  .error a{
+    width: 250px;
+    padding: 2vw 0.75vw 0.75vw 0.75vw;
+    font-size: 5vw;
+    border-radius: 6px;
+  } 
+
 
 }

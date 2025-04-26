@@ -429,9 +429,14 @@ router.post('/generate-image', async (req, res) => {
     const filePath = path.join(uploadsDir, filename);
     fs.writeFileSync(filePath, response.data);
     res.json({ success: true, filename });
-  } catch (error) {
-    console.error("Error generating image:", error);
-    res.json({ success: false });
+  } 
+  // catch (error) {
+  //   console.error("Error generating image:", error);
+  //   res.json({ success: false });
+  // }
+  catch (error) {
+    console.error("Error generating image:", error.response?.data || error.message);
+    res.json({ success: false, error: "Failed to generate image. Try again." });
   }
 });
 
