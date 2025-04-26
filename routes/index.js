@@ -350,6 +350,7 @@ const upload = require("./multer");
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const wrapAsync = require("../utils/wrapAsync");
 require('dotenv').config();
 
 passport.use(new localStrategy(userModel.authenticate()));
@@ -366,12 +367,12 @@ router.get('/', (req, res) => res.render('index', { nav: true }));
 router.get('/login', (req, res) => res.render('login', { nav: false }));
 router.get('/register', (req, res) => res.render('register', { nav: false }));
 
-router.get('/profile', isLoggedIn, async (req, res) => {
+router.get('/profile', isLoggedIn, wrapAsync(async (req, res) => {
   const user = await userModel.findOne({ username: req.session.passport.user }).populate("post");
   res.render('profile', { user, nav: true });
-});
+}));
 
-router.get('/feed', isLoggedIn, async (req, res) => {
+router.get('/feed', isLoggedIn, wrapAsync(async (req, res) => {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const posts = await postModel.find().populate("user");
 
@@ -381,32 +382,32 @@ router.get('/feed', isLoggedIn, async (req, res) => {
     .map(({ value }) => value);
 
   res.render('feed', { user, post: shuffleArray(posts), nav: true });
-});
+}));
 
 // Upload form
-router.get('/upload', isLoggedIn, async (req, res) => {
+router.get('/upload', isLoggedIn, wrapAsync(async (req, res) => {
   const user = await userModel.findOne({ username: req.session.passport.user });
   res.render('upload', { user, nav: true });
-});
+}));
 
 // Generate form
-router.get('/generate', isLoggedIn, async (req, res) => {
+router.get('/generate', isLoggedIn, wrapAsync(async (req, res) => {
   const user = await userModel.findOne({ username: req.session.passport.user });
   res.render('generate', { user, nav: true });
-});
+}));
 
 // Upload profile image
-router.post('/fileupload', isLoggedIn, upload.single("image"), async (req, res) => {
+router.post('/fileupload', isLoggedIn, upload.single("image"), wrapAsync(async (req, res) => {
   const user = await userModel.findOne({ username: req.session.passport.user });
   user.profileImage = req.file.filename;
   await user.save();
   res.redirect("/profile");
-});
+}));
 
 // Generate AI Image
 const clipdropApiKey = process.env.CLIPDROP_API_KEY;
 
-router.post('/generate-image', async (req, res) => {
+router.post('/generate-image', wrapAsync(async (req, res) => {
   const { prompt } = req.body;
   const uploadsDir = path.join(__dirname, '..', 'public', 'images', 'uploads');
 
@@ -438,10 +439,10 @@ router.post('/generate-image', async (req, res) => {
     console.error("Error generating image:", error.response?.data || error.message);
     res.json({ success: false, error: "Failed to generate image. Try again." });
   }
-});
+}));
 
 // Create post with image (upload or generated)
-router.post('/createpost', isLoggedIn, upload.single("postimage"), async (req, res) => {
+router.post('/createpost', isLoggedIn, wrapAsync(upload.single("postimage"), async (req, res) => {
   console.log("✅ Received request to create post.");
   const user = await userModel.findOne({ username: req.session.passport.user });
 
@@ -469,7 +470,7 @@ router.post('/createpost', isLoggedIn, upload.single("postimage"), async (req, r
   user.post.push(post._id);
   await user.save();
   res.redirect("/profile");
-});
+}));
 
 // Edit profile page
 router.get('/editprofile', isLoggedIn, async (req, res) => {
@@ -478,7 +479,7 @@ router.get('/editprofile', isLoggedIn, async (req, res) => {
 });
 
 // Handle edit profile form
-router.post('/editprofile', isLoggedIn, async (req, res) => {
+router.post('/editprofile', isLoggedIn, wrapAsync(async (req, res) => {
   try {
     const user = await userModel.findOne({ username: req.session.passport.user });
     user.name = req.body.name || user.name;
@@ -491,10 +492,10 @@ router.post('/editprofile', isLoggedIn, async (req, res) => {
     console.error("Error updating profile:", err);
     res.send("An error occurred while updating profile.");
   }
-});
+}));
 
 // Delete user and all posts
-router.post('/deleteuser', isLoggedIn, async (req, res, next) => {
+router.post('/deleteuser', isLoggedIn, wrapAsync(async (req, res, next) => {
   try {
     const user = await userModel.findOne({ username: req.session.passport.user });
 
@@ -515,23 +516,23 @@ router.post('/deleteuser', isLoggedIn, async (req, res, next) => {
     console.error("Error deleting user:", err);
     res.send("Something went wrong.");
   }
-});
+}));
 
 // Edit post
-router.get('/editpost/:id', isLoggedIn, async (req, res) => {
+router.get('/editpost/:id', isLoggedIn, wrapAsync(async (req, res) => {
   const post = await postModel.findById(req.params.id);
   const user = await userModel.findById(post.user);
   res.render('editpost', { post, user, nav: true });
-});
+}));
 
-router.post('/editpost/:id', isLoggedIn, async (req, res) => {
+router.post('/editpost/:id', isLoggedIn, wrapAsync(async (req, res) => {
   const { title, description } = req.body;
   await postModel.findByIdAndUpdate(req.params.id, { title, description });
   res.redirect('/profile');
-});
+}));
 
 // Delete post
-router.post('/deletepost/:id', isLoggedIn, async (req, res) => {
+router.post('/deletepost/:id', isLoggedIn, wrapAsync(async (req, res) => {
   const post = await postModel.findById(req.params.id);
   const user = await userModel.findOne({ username: req.session.passport.user });
 
@@ -543,7 +544,7 @@ router.post('/deletepost/:id', isLoggedIn, async (req, res) => {
 
   await postModel.findByIdAndDelete(req.params.id);
   res.redirect('/profile');
-});
+}));
 
 // Register route
 router.post('/register', (req, res) => {
