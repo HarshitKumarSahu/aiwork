@@ -50,6 +50,7 @@ nav {
   align-items: center;
   justify-content: center;
   padding: 1vw 2vw ;
+  z-index: 999999;
 }
 nav .navcontainer {
   width: 100%;
@@ -80,6 +81,12 @@ nav .navright {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+nav .navright .extraphone {
+  display: none;
+}
+nav .menuicon {
+  display: none;
 }
 .main {
   width: 100%;
@@ -1065,6 +1072,95 @@ input[type=number] {
   }
 }
 @media only screen and (max-width: 600px) {
+  nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw 2vw ;
+  }
+  nav .navcontainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5vw;
+    border-bottom: 1px solid #696969;
+    position: relative;
+  }
+  nav .navleft {
+    /* width: 30%; */
+    display: none;
+    /* align-items: center;
+    justify-content: space-evenly; */
+    /* background-color: aqua; */
+  }
+  nav .navmiddle {
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* position: absolute; */
+
+  }
+  nav .navmiddle .logocontainer {
+    width: 60%;
+  }
+  nav .navright {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: -250px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #D1D1D1;  
+    z-index: 99;  
+    padding: 8vw;
+    border-radius: 8px;
+    /* display: none; */
+  }
+  nav .navright a {
+    font-size: 6vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+  }
+  nav .navright .extraphone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  nav .menuicon {
+    width: 10%;
+    /* height: 100px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  nav .menuicon .menuiconicon {
+    width: 100%;
+    position: relative;
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+    z-index: 999;  
+  }
+  nav .menuicon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7vw;
+    color: #303030;
+  }
+
+
+
+
+
   /* .main {
     width: 100%;
     padding: 2vw 5vw;
