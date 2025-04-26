@@ -709,8 +709,9 @@ nav .navright {
   color: #303030;
   border: 1px solid #303030;
   /* font-family: grifter; */
-  letter-spacing: 1.5px;
-  padding: 0.95vw 1.65vw;
+  letter-spacing: 0.5px;
+  padding: 0.95vw 1vw;
+  
 }
 
 

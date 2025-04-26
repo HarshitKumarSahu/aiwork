@@ -442,7 +442,7 @@ router.post('/generate-image', wrapAsync(async (req, res) => {
 }));
 
 // Create post with image (upload or generated)
-router.post('/createpost', isLoggedIn, wrapAsync(upload.single("postimage"), async (req, res) => {
+router.post('/createpost', isLoggedIn, upload.single("postimage"), async (req, res) => {
   console.log("✅ Received request to create post.");
   const user = await userModel.findOne({ username: req.session.passport.user });
 
@@ -470,7 +470,7 @@ router.post('/createpost', isLoggedIn, wrapAsync(upload.single("postimage"), asy
   user.post.push(post._id);
   await user.save();
   res.redirect("/profile");
-}));
+});
 
 // Edit profile page
 router.get('/editprofile', isLoggedIn, async (req, res) => {
@@ -572,5 +572,9 @@ router.get('/logout', (req, res, next) => {
     res.redirect('/');
   });
 });
+
+
+
+
 
 module.exports = router;
