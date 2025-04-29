@@ -2054,3 +2054,82 @@ input[type=number] {
 
 
 }
+
+.page3 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  margin-top: 4vw;
+  background-color: #DCDCDA;
+  padding: 4vw 0;
+  height: 100vh;
+}
+.page3top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page3topleft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+}
+.page3topleft h1 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2.5vw;
+  color: #696969;
+}
+.page3topleft h1 span {
+  color: #303030;
+}
+.page3topmiddle {
+  width: 20%;
+  height: 1.25px;
+  background-color: #303030;
+}
+.page3topright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.page3topright p {
+  font-size: 1.75vw;
+  color: #696969;
+}
+.page3bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.artistprofileimg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.swiper {
+  width: 90%;
+  height: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 250px; */
+}

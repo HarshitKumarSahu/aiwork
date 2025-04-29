@@ -69,20 +69,77 @@
             </div>
 
         </div>
+
         <div class="page3">
             <div class="page3top">
                 <div class="page3topleft">
                     <h1>MEET THE <span>ARTIST</span></h1>
                 </div>
+                <div class="page3topmiddle">
+                    
+                </div>
                 <div class="page3topright">
-                    <p>To create AI-generated art, artists use AI as a creative tool and work with algorithms</p>
+                    <p>Discover the top artists shaping our platform with creativity, passion, and unmatched skill.</p>
                 </div>
             </div>
-            <div class="page3bottom">
-                
-            </div>
-        </div>    
-        <div class="page5">
+            <!-- <div class="page3bottom"> -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="artistprofileimg">
+                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
+                            </div>
+                            <p>@username</p>
+                            <p>full Name</p>
+                            <p>total art</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="artistprofileimg">
+                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
+                            </div>
+                            <p>@username</p>
+                            <p>full Name</p>
+                            <p>total art</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="artistprofileimg">
+                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
+                            </div>
+                            <p>@username</p>
+                            <p>full Name</p>
+                            <p>total art</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="artistprofileimg">
+                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
+                            </div>
+                            <p>@username</p>
+                            <p>full Name</p>
+                            <p>total art</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="artistprofileimg">
+                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
+                            </div>
+                            <p>@username</p>
+                            <p>full Name</p>
+                            <p>total art</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="artistprofileimg">
+                                <img src="" alt="">
+                            </div>
+                            <p>@username</p>
+                            <p>full Name</p>
+                            <p>total art</p>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+            <!-- </div> -->
+        </div>
+
+        <!-- <div class="page5">
             <div class="page5top">
                 <div class="page5topleft">
                     <div class="page5topleftline"></div>
@@ -142,8 +199,19 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
-    <script type="module" src="/javascripts/script.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 4,
+      spaceBetween: 30,
+      freeMode: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+   
 <%- include('partials/footer') %>
