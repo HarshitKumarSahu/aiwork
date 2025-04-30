@@ -1,5 +1,5 @@
 const passport = require("passport");
-const userModel = require("../models/users");
+const userModel = require("../models/users.model");
 
 exports.register = (req, res) => {
   const data = new userModel({

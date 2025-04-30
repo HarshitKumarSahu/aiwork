@@ -23,7 +23,7 @@
             const imageUrl = document.querySelectorAll('.profileImage')[index].src;
             const a = document.createElement('a');
             a.href = imageUrl;
-            a.download = `profile_image_${index + 1}.jpg`; // Unique filename for each image
+            a.download = `AI.WORK_image_${index + 1}.jpg`; // Unique filename for each image
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

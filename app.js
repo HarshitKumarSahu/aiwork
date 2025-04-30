@@ -94,7 +94,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 // Routes and Models
 var indexRouter = require('./routes/index.route');
-var usersRouter = require('./models/users'); // Assuming users.js exports your user model
+var usersRouter = require('./models/users.model'); // Assuming users.js exports your user model
 
 var app = express();
 

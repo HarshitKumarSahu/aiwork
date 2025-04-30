@@ -1,5 +1,5 @@
-const userModel = require("../models/users");
-const postModel = require("../models/post");
+const userModel = require("../models/users.model");
+const postModel = require("../models/post.model");
 const fs = require('fs');
 const path = require('path');
 
