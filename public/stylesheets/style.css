@@ -325,12 +325,10 @@ nav .menuicon {
 
 
 
-
-
 .main .page5 {
   padding-top: 4vw;
   width: 100%;
-  /* height: 100vh; */
+  min-height: 100vh;
 }
 .main .page5 .page5top {
   width: 100%;
@@ -375,78 +373,33 @@ nav .menuicon {
   justify-content: center;
   flex-direction: column;
 }
-.main .page5 .page5bottom .page5bottomelems {
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
   width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  /* margin-bottom: 2vw; */
-  /* flex-direction: column; */
-}
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft {
-  width: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .cross {
-  width: 2.5vw;
-  height: 30px;
-  /* background-color: blueviolet; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .horizontal {
-  width: 100%;
-  height: 0.5vw;
-  background-color: #303030;
-  position: absolute;
-  border-radius: 3px;
-} 
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsleft .vertical {
-  width: 100%;
-  height: 0.5vw;
-  background-color: #303030;
-  rotate: 90deg;
-  position: absolute;
-  border-radius: 3px;
-} 
-
-
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright {
-  width: 90%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 6vw 0 8vw ;
-}
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-toggle {
-  width: 100%;
-  height: 100%;
-  padding: 2vw 0;
-}
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-toggle h1 {
-  color: #303030;
-  font-size: 3vw;
-  letter-spacing: 1px;
-}
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-content {
-  width: 100%;
-  /* display: none; */
-  padding-bottom: 3vw;
-  margin-bottom: 3vw;
-}
-.main .page5 .page5bottom .page5bottomelems .page5bottomelemsright .acc-content p {
-  font-family: lexend;
-  font-size: 1.5vw;
-  color: #696969;
+  justify-content: flex-start;
 }
 
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
 
-
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
 
 
 
@@ -1399,6 +1352,114 @@ input[type=number] {
 
 
 
+  .main .page3 {
+    /* width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden; */
+    margin-top: 5vw;
+    background-color: #E5E5E5;
+    padding: 4vw 0;
+    gap: 5vw;
+    /* height: 100vh; */
+  }
+  .main .page3 .page3top {
+    width: 100%;
+    /* display: flex; */
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column ;
+  }
+  .main .page3 .page3top .page3topleft {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100% ;
+  }
+  .main .page3 .page3top .page3topleft h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+    /* font-size: 2.5vw; */
+    font-size: 6vw;
+    letter-spacing: 1px;
+    color: #696969;
+    /* background-color: bisque; */
+  }
+  /* .main .page3 .page3top .page3topleft h1 span {
+    color: #303030;
+  } */
+  .page3topmiddle {
+    /* width: 100% !important;
+    height: 1.25px;
+    background-color: #303030; */
+    display: none;
+  }
+  .main .page3 .page3top .page3topright {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    width: 100%;
+    margin-top: 5px;
+  }
+  .main .page3 .page3top .page3topright p {
+    /* font-size: 1.75vw; */
+    letter-spacing: 1px;
+    font-size: 4.5vw;
+    color: #303030;
+  }
+  /* .main .page3 .page3bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  } */
+  .main .page3 .page3bottom .swiper {
+    width: 100%;
+    /* height: auto; */
+  }
+  .main .page3 .page3bottom .swiper .swiper-slide {
+    /* text-align: center; */
+    font-size: 3vw;
+    /* background: #fff; */
+    /* display: flex !important; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* flex-direction: column; */
+    /* height: 250px; */
+    border-radius: 8px;
+    /* background-color: #e5e5e55e; */
+    border: 1.5px solid #fff;
+  }
+  .main .page3 .page3bottom .swiper .swiper-slide .artistprofileimg {
+    width: 120px;
+    height: 120px;
+    /* border-radius: 50%;
+    overflow: hidden; */
+    margin: 10px 0;
+  }
+  /* .main .page3 .page3bottom .swiper .swiper-slide h3 {
+    font-family: grifter;
+    color: #303030;
+    letter-spacing: 1px;
+  } */
+  .main .page3 .page3bottom .swiper .swiper-slide p {
+    margin: 2px 0;
+    /* color: #303030;
+    font-family: lexend; */
+  }
+  .main .page3 .page3bottom .swiper .swiper-slide .quote {
+    /* width: 90%;
+    color: #696969; */
+    margin-bottom: 15px;
+  }
+
 
 
 
@@ -2066,7 +2127,9 @@ input[type=number] {
   margin-top: 4vw;
   background-color: #DCDCDA;
   padding: 4vw 0;
-  height: 100vh;
+  gap: 2vw;
+  border-radius: 12px;
+  /* height: 100vh; */
 }
 .page3top {
   width: 100%;
@@ -2085,6 +2148,7 @@ input[type=number] {
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
+  /* font-size: 2.5vw; */
   font-size: 2.5vw;
   color: #696969;
 }
@@ -2113,23 +2177,42 @@ input[type=number] {
   justify-content: center;
   overflow: hidden;
 }
-.artistprofileimg {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  overflow: hidden;
-}
 .swiper {
   width: 90%;
   height: auto;
 }
-
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
-  display: flex;
+  /* background: #fff; */
+  display: flex !important;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   /* height: 250px; */
+  border-radius: 12px;
+  background-color: #e5e5e55e;
+  border: 1.5px solid #fff;
+}
+.swiper-slide .artistprofileimg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 15px 0;
+}
+.swiper-slide h3 {
+  font-family: grifter;
+  color: #303030;
+  letter-spacing: 1px;
+}
+.swiper-slide p {
+  margin: 5px 0;
+  color: #303030;
+  font-family: lexend;
+}
+.swiper-slide .quote {
+  width: 90%;
+  color: #696969;
+  margin-bottom: 15px;
 }

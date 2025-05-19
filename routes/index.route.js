@@ -252,7 +252,8 @@ function isLoggedIn(req, res, next) {
 }
 
 // Pages
-router.get('/', (req, res) => res.render('index', { nav: true }));
+// router.get('/', (req, res) => res.render('index', { nav: true }));
+router.get('/', wrapAsync(userController.getUsers));;
 router.get('/login', (req, res) => res.render('login', { nav: false }));
 router.get('/register', (req, res) => res.render('register', { nav: false }));
 

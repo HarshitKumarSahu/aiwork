@@ -3,6 +3,16 @@ const postModel = require("../models/post.model");
 const fs = require('fs');
 const path = require('path');
 
+exports.getUsers =  async (req, res) => {
+  try {
+    const users = await userModel.find({}).populate('post'); // fetch all users with their posts
+    res.render('index', { nav: true, users });
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.render('index', { nav: true, users: [] });
+  }
+};
+
 exports.getProfile = async (req, res) => {
   const user = await userModel.findOne({ username: req.session.passport.user }).populate("post");
   res.render('profile', { user, nav: true });

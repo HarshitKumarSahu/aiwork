@@ -82,64 +82,42 @@
                     <p>Discover the top artists shaping our platform with creativity, passion, and unmatched skill.</p>
                 </div>
             </div>
-            <!-- <div class="page3bottom"> -->
+            <div class="page3bottom">
                 <div class="swiper mySwiper">
+                    <% const quotes = [
+                        "Creativity takes courage to create.",
+                        "Every artist was first an amateur.",
+                        "Inspiration exists, but it has to find you working.",
+                        "Art speaks where words are unable to explain.",
+                        "Painting is just another way of keeping a diary.",
+                        "You don’t take a photograph, you make it.",
+                        "Make it simple, but significant.",
+                        "Less talk, more art, more creativity.",
+                        "Draw your dreams. let it be happens.",
+                        "Colors speak louder than words."
+                    ]; %>
+                
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="artistprofileimg">
-                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
+                        <% users.forEach(function(user) { %>
+                            <% 
+                                var randomIndex = Math.floor(Math.random() * quotes.length); 
+                                var quote = quotes[randomIndex]; 
+                            %>
+                            <div class="swiper-slide">
+                                <div class="artistprofileimg">
+                                    <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : 'https://cdn.cosmos.so/d5e83585-51c2-4548-ad97-9458bd50ec95?format=webp&w=554' %>" alt="Profile Image">
+                                </div>
+                                <h3>@<%= user.username %></h3>
+                                <p><%= user.name %></p>
+                                <p>Total art: <%= user.post.length %></p>
+                                <p class="quote">"<%= quote %>"</p>
                             </div>
-                            <p>@username</p>
-                            <p>full Name</p>
-                            <p>total art</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="artistprofileimg">
-                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
-                            </div>
-                            <p>@username</p>
-                            <p>full Name</p>
-                            <p>total art</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="artistprofileimg">
-                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
-                            </div>
-                            <p>@username</p>
-                            <p>full Name</p>
-                            <p>total art</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="artistprofileimg">
-                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
-                            </div>
-                            <p>@username</p>
-                            <p>full Name</p>
-                            <p>total art</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="artistprofileimg">
-                                <img src="/images/uploads/1d84ea94-b18a-4e72-b887-23f71b0d692f.jpg" alt="">
-                            </div>
-                            <p>@username</p>
-                            <p>full Name</p>
-                            <p>total art</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="artistprofileimg">
-                                <img src="" alt="">
-                            </div>
-                            <p>@username</p>
-                            <p>full Name</p>
-                            <p>total art</p>
-                        </div>
+                        <% }); %>
                     </div>
-                    <div class="swiper-pagination"></div>
-                  </div>
-            <!-- </div> -->
+                </div>
+            </div>
         </div>
-
-        <!-- <div class="page5">
+        <div class="page5">
             <div class="page5top">
                 <div class="page5topleft">
                     <div class="page5topleftline"></div>
@@ -150,68 +128,67 @@
                 </div>
             </div>
             <div class="page5bottom">
-                <div class="page5bottomelems">
-                    <div class="page5bottomelemsleft">
-                        <div class="cross">
-                            <div class="horizontal"></div>
-                            <div class="vertical"></div>
+                    <button class="accordion">
+                        <div class="accicon">
+                            <div class="acciconicon">
+                                <i class="fa-solid fa-ellipsis"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
                         </div>
+                        What is AI (Artificial intelligence)?
+                    </button>
+                    <div class="panel">
+                        <p>The theory and development of computer systems able to perform tasks that normally require human intelligence, such as visual perception.</p>
                     </div>
-                    <div class="page5bottomelemsright">
-                        <div class="acc-toggle">
-                            <h1>What is AI (Artificial intelligence)?</h1>
-                        </div>
-                        <div class="acc-content">
-                            <p>The theory and development of computer systems able to perform tasks that normally require human intelligence, such as visual perception.</p>
-                        </div>
+
+                    <button class="accordion">How can AI draw something?</button>
+                    <div class="panel">
+                        <p>To create AI-generated art, artists use AI as a creative tool and work with algorithms to set up specific rules through which machines analyze.</p>
                     </div>
-                </div>
-                <div class="page5bottomelems">
-                    <div class="page5bottomelemsleft">
-                        <div class="cross">
-                            <div class="horizontal"></div>
-                            <div class="vertical"></div>
-                        </div>
+
+                    <button class="accordion">Can AI replace human artists?</button>
+                    <div class="panel">
+                        <p>AI art can never replace human artists as they will always be required to choose the subject and its surroundings for producing the desired results.</p>
                     </div>
-                    <div class="page5bottomelemsright">
-                        <div class="acc-toggle">
-                            <h1>How can AI draw something?</h1>
-                        </div>
-                        <div class="acc-content">
-                            <p>To create AI-generated art, artists use AI as a creative tool and work with algorithms to set up specific rules through which machines analyze.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="page5bottomelems">
-                    <div class="page5bottomelemsleft">
-                        <div class="cross">
-                            <div class="horizontal"></div>
-                            <div class="vertical"></div>
-                        </div>
-                    </div>
-                    <div class="page5bottomelemsright">
-                        <div class="acc-toggle">
-                            <h1>Can AI replace human artists?</h1>
-                        </div>
-                        <div class="acc-content">
-                            <p>AI art can never replace human artists as they will always be required to choose the subject and its surroundings for producing the desired results.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
 <script>
+    // var swiper = new Swiper(".mySwiper", {
+    //   slidesPerView: 4,
+    //   spaceBetween: 30,
+    //   freeMode: true,
+    //   pagination: {
+    //     el: ".swiper-pagination",
+    //     clickable: true,
+    //   },
+    // });
+
     var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 4,
-      spaceBetween: 30,
-      freeMode: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    });
+        freeMode: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        breakpoints: {
+            // when window width is >= 0px
+            0: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+            },
+            // when window width is >= 600px
+            600: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            850: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            }
+
+    }
+});
   </script>
    
 <%- include('partials/footer') %>
