@@ -1,25 +1,4 @@
 <%- include('partials/header') %>
-<!-- <h1>Generate New Pin with AI</h1><br> -->
-
-<!-- <form id="generatePostForm" action="/createpost" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="imageOption" value="generate"> <!-- Hidden field to indicate generation 
-
-    <input type="text" id="imagePrompt" name="imagePrompt" placeholder="Enter prompt for AI image" required><br><br>
-    <button type="button" onclick="generateImage()">Generate Image</button><br><br>
-
-    <div id="imagePreviewContainer" style="display:none;">
-        <p>Generated Image Preview:</p>
-        <img id="generatedImagePreview" src="" alt="Generated Image" style="max-width: 100%; height: auto;"><br><br>
-    </div>
-
-    <!-- Hidden input to store generated image filename 
-    <input type="hidden" name="generatedImageFilename" id="generatedImageFilename">
-
-    <input type="text" placeholder="Title" name="title" required><br><br>
-    <textarea name="description" placeholder="Description"></textarea><br><br>
-    <input type="submit" value="Create Post">
-</form> -->
-
 <div class="postcreatecontainer">
     <div class="createcont">
         <h1>Generate Art with AI</h1>
@@ -29,7 +8,6 @@
                 <div id="imagePreviewContainer">
                     <h4>Generated Image Preview:</h4>
                     <div class="imgcontainer">
-                        <!-- <img id="imagePreview" src="" alt="Preview" style="display: none;"> -->
                         <img id="generatedImagePreview" src="" alt="Generated Image" style="display: none;">
                     </div>
                 </div>
@@ -53,7 +31,6 @@
                     <input class="submit" type="submit" value="Create Post">
                 </form>
                 <p>Already have Art</p>
-                <!-- <a class="lastbutton" href="/register">Create new account</a> -->
                 <a class="lastbutton" href="/upload"><input class="submit" type="submit" value="Upload Art"></a>
             </div>
         </div>
@@ -63,7 +40,6 @@
 <script>
     async function generateImage() {
         const prompt = document.getElementById('imagePrompt').value;
-        // const preview = document.getElementById('imagePreview');
         if (!prompt.trim()) {
             alert('Please enter a prompt!');
             return;

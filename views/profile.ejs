@@ -1,35 +1,5 @@
 <%- include('partials/header') %>
-    <!-- <h1>profile</h1>
-    <form action="/fileupload" id="uploadform" hidden method="post" enctype="multipart/form-data">
-        <input type="file" name="image">
-    </form>
-    <div class="profilehed">
-        <div class="profileimg" style="border-radius: 50%; height: 100px; width: 100px; background-color: aqua; position: relative; display: flex; align-items: center; justify-content: center;">
-            <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : 'https://cdn.cosmos.so/d5e83585-51c2-4548-ad97-9458bd50ec95?format=webp&w=554' %>" 
-            alt="Profile Image" 
-            style="width: 100%; height: 100%; object-fit: cover; position: absolute;">
-
-            <div class="uploadicon" style="width: 30px; height: 30px; background-color: aliceblue; z-index: 9;">
-                <i class="fa-solid fa-pen-to-square" style="position: absolute; z-index: 9;"></i>
-            </div>
-        </div>
-        <h1><%= user ? user.name : 'Guest' %></h1>
-        <h3><%= user ? '@' + user.username : '' %></h3>
-        <a href="/edit">Edit</a> <br>
-        <a href="/upload">create new post</a>
-    </div> <br> <br>
-    <div class="cards">
-        <div class="card">
-            <div style="overflow: hidden; width: 200px; height: 300px;">
-                <img src="/images/uploads/<%=user?.post[0]?.image%>" alt="" style="width: 100%; height: 100%;">
-            </div>
-            <a href="/show/posts"><h2>all pins</h2></a>
-            <h3><%= user.post.length %> pins</h3>
-        </div>
-    </div> -->
-
     <div class="profile">
-        <!-- <h1>profile</h1> -->
         <form action="/fileupload" id="uploadform" hidden method="post" enctype="multipart/form-data">
             <input type="file" name="image">
         </form>
@@ -52,15 +22,6 @@
                 <a href="/upload">Create Art</a>
             </div>
         </div>
-        <!-- <div class="cards">
-            <div class="card">
-                <div style="overflow: hidden; width: 200px; height: 300px;">
-                    <img src="/images/uploads/<%=user?.post[0]?.image%>" alt="" style="width: 100%; height: 100%;">
-                </div>
-                <a href="/show/posts"><h2>all pins</h2></a>
-                <h3><%= user.post.length %> pins</h3>
-            </div>
-        </div> -->
         <div class="profileArtContent">
             <h1>Your Arts</h1>
             <div class="cards">
@@ -69,7 +30,6 @@
                         <div>
                             <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt="">
                         </div>
-                        <!-- <a href="/show/posts"><h2>all pins</h2></a> -->
                         <h3><%= elem.title %></h3>
                         <p><%= elem.description %></p>
                         <div class="postbutton">

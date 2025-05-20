@@ -1,9 +1,4 @@
 <%- include('partials/header') %>
-    <!-- <h1>Welcome to AI.Work</h1>
-    <h1>home page</h1>
-    <a href="/login">Have an account</a>
-    <a href="/register">create an account</a> -->
-    
     <div class="main">
         <div class="page1">
             <div class="page1line1">
@@ -96,24 +91,6 @@
                         "Draw your dreams. let it be happens.",
                         "Colors speak louder than words."
                     ]; %>
-                
-                    <!-- <div class="swiper-wrapper">
-                        <% users.forEach(function(user) { %>
-                            <% 
-                                var randomIndex = Math.floor(Math.random() * quotes.length); 
-                                var quote = quotes[randomIndex]; 
-                            %>
-                            <div class="swiper-slide">
-                                <div class="artistprofileimg">
-                                    <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : 'https://cdn.cosmos.so/d5e83585-51c2-4548-ad97-9458bd50ec95?format=webp&w=554' %>" alt="Profile Image">
-                                </div>
-                                <h3>@<%= user.username %></h3>
-                                <p><%= user.name %></p>
-                                <p>Total art: <%= user.post.length %></p>
-                                <p class="quote">"<%= quote %>"</p>
-                            </div>
-                        <% }); %>
-                    </div> -->
                     <div class="swiper-wrapper">
                         <% 
                             const fallbackImages = [
@@ -123,7 +100,7 @@
                                 "/images/profileFallbacKImg/5.jpg",
                                 "/images/profileFallbacKImg/6.jpg",
                             ];
-                            const totalSlides = Math.max(users.length, 4); 
+                            const totalSlides = Math.max(users.length, 5); 
                         %>
                         <% for (let i = 0; i < totalSlides; i++) { %>
                         <%    
@@ -143,6 +120,7 @@
                           </div>
                         <% } %>
                     </div>
+
                       
                     
                 </div>
@@ -156,46 +134,6 @@
                         <img src="/images/icons/8.png" alt="">
                     </div>
             </div>
-            <!-- <div class="page5bottom">
-                    <button class="accordion">
-                        <div class="accicon">
-                            <div class="acciconicon">
-                                <i class="fa-solid fa-ellipsis"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </div>
-                        </div>
-                        What is AI (Artificial intelligence)?
-                    </button>
-                    <div class="panel">
-                        <p>The theory and development of computer systems able to perform tasks that normally require human intelligence, such as visual perception.</p>
-                    </div>
-
-                    <button class="accordion">
-                        <div class="accicon">
-                            <div class="acciconicon">
-                                <i class="fa-solid fa-ellipsis"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </div>
-                        </div>
-                        How can AI draw something?
-                    </button>
-                    <div class="panel">
-                        <p>To create AI-generated art, artists use AI as a creative tool and work with algorithms to set up specific rules through which machines analyze.</p>
-                    </div>
-
-                    <button class="accordion">
-                        <div class="accicon">
-                            <div class="acciconicon">
-                                <i class="fa-solid fa-ellipsis"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </div>
-                        </div>
-                        Can AI replace human artists?
-                    </button>
-                    <div class="panel">
-                        <p>AI art can never replace human artists as they will always be required to choose the subject and its surroundings for producing the desired results.</p>
-                    </div>
-            </div> -->
             <div class="page5bottom">
                 <button class="accordion">
                     <div class="accicon">
@@ -277,16 +215,6 @@
     </div>
 
 <script>
-    // var swiper = new Swiper(".mySwiper", {
-    //   slidesPerView: 4,
-    //   spaceBetween: 30,
-    //   freeMode: true,
-    //   pagination: {
-    //     el: ".swiper-pagination",
-    //     clickable: true,
-    //   },
-    // });
-
     var swiper = new Swiper(".mySwiper", {
         freeMode: true,
         pagination: {
@@ -308,9 +236,8 @@
                 slidesPerView: 4,
                 spaceBetween: 30,
             }
-
-    }
-});
+        }
+    });
   </script>
    
 <%- include('partials/footer') %>
