@@ -440,6 +440,7 @@ nav .menuicon {
   padding-top: 4vw;
   width: 100%;
   height: auto;
+  padding-bottom: 4vw;
 }
 .main .page5 .page5top {
   width: 100%;
@@ -648,7 +649,8 @@ nav .menuicon {
   justify-content: center;
 }
 .loginregistercontainer .logregcont {
-  width: 400px;
+  /* width: 400px; */
+  width: 33.33333%;
   height: auto;
   /* background-color: aqua; */
   display: flex;
@@ -758,7 +760,8 @@ nav .menuicon {
   gap: 4vw;
 }
 .postcreatecontainer .createcont .formContainer .right {
-  width: 400px;
+  /* width: 400px; */
+  width: 33.3333%;
   height: 100%;
   /* background-color: rgb(8, 50, 50); */
   display: flex;
@@ -1127,7 +1130,8 @@ nav .menuicon {
   margin: 2vw 0;
 }
 .edit form {
-  width: 400px;
+  /* width: 400px; */
+  width: inherit;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1186,6 +1190,9 @@ nav .menuicon {
   letter-spacing: 1.5px;
   margin-top: 1vw;
 } 
+.edit .delete {
+  width: 100%;
+}
 .edit .delete button {
   width: 100%;
   padding: 0.75vw;
@@ -2183,8 +2190,10 @@ input[type=number] {
     font-family: grifter;
     letter-spacing: 1.5px;
   }
-  
-
+  .profileArtContent .cards {
+    height: 100%;
+    column-width: 125px;
+  }
   .profileArtContent .cards .card {
     /* width: 100%;
     overflow: hidden;
@@ -2215,6 +2224,7 @@ input[type=number] {
     font-size: 4vw;
     border-radius: 6px;
     padding: 2vw 1.65vw 1.5vw;
+    width: 100%;
     /* text-align: center;
     width: 100%;
     margin-top: 10px; */
@@ -2225,7 +2235,10 @@ input[type=number] {
     /* text-transform: uppercase; */
     /* color: #303030; */
   }
-
+  .postbutton {
+    flex-direction: column;
+    gap: 0;
+  }
   .postbutton a {
     /* background-color: transparent; */
     /* color: #303030; */
@@ -2242,6 +2255,7 @@ input[type=number] {
     font-size: 4vw;
     border-radius: 6px;
     padding: 3vw 1.5vw 2.25vw 1.5vw;
+    width: 100%;
   }
   
 
