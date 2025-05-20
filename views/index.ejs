@@ -87,17 +87,17 @@
                     <% const quotes = [
                         "Creativity takes courage to create.",
                         "Every artist was first an amateur.",
-                        "Inspiration exists, but it has to find you working.",
-                        "Art speaks where words are unable to explain.",
-                        "Painting is just another way of keeping a diary.",
-                        "You don’t take a photograph, you make it.",
+                        "Inspiration exists, if you works.",
+                        "Art speaks and work to explain.",
+                        "Painting is like keeping a diary.",
+                        "You take a art, you make it.",
                         "Make it simple, but significant.",
                         "Less talk, more art, more creativity.",
                         "Draw your dreams. let it be happens.",
                         "Colors speak louder than words."
                     ]; %>
                 
-                    <div class="swiper-wrapper">
+                    <!-- <div class="swiper-wrapper">
                         <% users.forEach(function(user) { %>
                             <% 
                                 var randomIndex = Math.floor(Math.random() * quotes.length); 
@@ -113,7 +113,38 @@
                                 <p class="quote">"<%= quote %>"</p>
                             </div>
                         <% }); %>
+                    </div> -->
+                    <div class="swiper-wrapper">
+                        <% 
+                            const fallbackImages = [
+                                "/images/profileFallbacKImg/2.jpg",
+                                "/images/profileFallbacKImg/3.jpg",
+                                "/images/profileFallbacKImg/4.jpg",
+                                "/images/profileFallbacKImg/5.jpg",
+                                "/images/profileFallbacKImg/6.jpg",
+                            ];
+                            const totalSlides = Math.max(users.length, 4); 
+                        %>
+                        <% for (let i = 0; i < totalSlides; i++) { %>
+                        <%    
+                            const user = users[i];
+                            const randomIndex = Math.floor(Math.random() * quotes.length);
+                            const quote = quotes[randomIndex];
+                            const fallbackImg = fallbackImages[i % fallbackImages.length];
+                        %>
+                          <div class="swiper-slide">
+                            <div class="artistprofileimg">
+                              <img src="<%= user && user.profileImage ? '/images/uploads/' + user.profileImage : fallbackImg %>" alt="Profile Image">
+                            </div>
+                            <h3>@<%= user ? user.username : 'guest_user_' + (i + 1) %></h3>
+                            <p><%= user ? user.name : 'Anonymous' %></p>
+                            <p>Total art: <%= user ? user.post.length : 0 %></p>
+                            <p class="quote">"<%= quote %>"</p>
+                          </div>
+                        <% } %>
                     </div>
+                      
+                    
                 </div>
             </div>
         </div>
