@@ -5,9 +5,11 @@
   <div class="editcontainer">
     <div class="editleft">
       <div class="profileimg">
-        <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : 'https://cdn.cosmos.so/d5e83585-51c2-4548-ad97-9458bd50ec95?format=webp&w=554' %>" 
-        alt="Profile Image">
+        <img 
+          src="<%= user.profileImage && user.profileImage.startsWith('http') ? user.profileImage : '/images/uploads/' + user.profileImage %>" 
+          alt="Profile Image">
       </div>
+      
     </div>
   
     <div class="editright">

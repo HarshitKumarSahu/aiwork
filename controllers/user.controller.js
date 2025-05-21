@@ -32,10 +32,18 @@ exports.deleteUser = async (req, res, next) => {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const posts = await postModel.find({ user: user._id });
 
-  posts.forEach(post => {
-    const imagePath = path.join(__dirname, '..', 'public', 'images', 'uploads', post.image);
-    if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
-  });
+  // posts.forEach(post => {
+  //   const imagePath = path.join(__dirname, '..', 'public', 'images', 'uploads', post.image);
+  //   if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
+  // });
+
+  const { cloudinary } = require('../utils/cloudConfig');
+
+  for (const post of posts) {
+    if (post.image && post.image.filename) {
+      await cloudinary.uploader.destroy(post.image.filename);
+    }
+  }
 
   await postModel.deleteMany({ user: user._id });
   await userModel.findByIdAndDelete(user._id);

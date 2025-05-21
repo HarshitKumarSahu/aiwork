@@ -111,7 +111,8 @@
                         %>
                           <div class="swiper-slide">
                             <div class="artistprofileimg">
-                              <img src="<%= user && user.profileImage ? '/images/uploads/' + user.profileImage : fallbackImg %>" alt="Profile Image">
+                              <!-- <img src="<%= user && user.profileImage ? '/images/uploads/' + user.profileImage : fallbackImg %>" alt="Profile Image"> -->
+                              <img src="<%= user && user.profileImage ? (user.profileImage.startsWith('http') ? user.profileImage : '/images/uploads/' + user.profileImage) : fallbackImg %>" alt="Profile Image">
                             </div>
                             <h3>@<%= user ? user.username : 'guest_user_' + (i + 1) %></h3>
                             <p><%= user ? user.name : 'Anonymous' %></p>

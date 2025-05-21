@@ -1,9 +1,13 @@
+if(process.env.NODE_ENV != "production") {
+  require('dotenv').config();
+}
+
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 const upload = require("./multer.route");
 const wrapAsync = require("../utils/wrapAsync");
-require('dotenv').config();
+// require('dotenv').config();
 
 const authController = require("../controllers/auth.controller");
 const userController = require("../controllers/user.controller");

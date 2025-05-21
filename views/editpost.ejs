@@ -4,7 +4,8 @@
     <div class="editcontainer">
       <div class="editleft">
         <div class="postimg">
-            <img src="/images/uploads/<%= post.image %>" alt="Art Image"/>
+            <!-- <img src="/images/uploads/<%= post.image %>" alt="Art Image"/> -->
+            <img class="profileImage" src="<%= post.image?.url || '/images/profileFallbacKImg/1.jpg' %>" alt="">
         </div>
       </div>
       <div class="editright">

@@ -7,7 +7,10 @@ const postSchema = mongoose.Schema({
     },
     title : String,
     description : String,
-    image : String,
+    image : {
+        url: String,
+        filename: String,
+    },
 })
 
 

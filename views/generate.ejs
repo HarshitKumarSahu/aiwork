@@ -13,7 +13,8 @@
                 </div>
             </div>
             <div class="right">
-                <form id="generatePostForm" action="/createpost" method="post" enctype="multipart/form-data">
+                <!-- <form id="generatePostForm" action="/createpost" method="post" enctype="multipart/form-data"> -->
+                <form id="generatePostForm" action="/createpost" method="post">
                     <input type="hidden" name="imageOption" value="generate">  <!-- Hidden field to indicate generation -->
 
                     <div class="genrateInput">
@@ -38,36 +39,68 @@
 </div>
 <script type="module" src="/javascripts/main.js"></script>
 <script>
+    // async function generateImage() {
+    //     const prompt = document.getElementById('imagePrompt').value;
+    //     if (!prompt.trim()) {
+    //         alert('Please enter a prompt!');
+    //         return;
+    //     }
+
+    //     try {
+    //         const response = await fetch('/generate-image', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ prompt })
+    //         });
+
+    //         const data = await response.json();
+
+    //         if (data.success) {
+    //             document.getElementById('generatedImagePreview').src = `/images/uploads/${data.filename}`;
+    //             document.getElementById('generatedImageFilename').value = data.filename;
+    //             document.getElementById('generatedImagePreview').style.display = 'flex';
+    //         } else {
+    //             alert('Failed to generate image. Please try again.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error generating image:', error);
+    //         alert('Something went wrong!');
+    //     }
+    // }
+
     async function generateImage() {
-        const prompt = document.getElementById('imagePrompt').value;
-        if (!prompt.trim()) {
-            alert('Please enter a prompt!');
-            return;
-        }
-
-        try {
-            const response = await fetch('/generate-image', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ prompt })
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                document.getElementById('generatedImagePreview').src = `/images/uploads/${data.filename}`;
-                document.getElementById('generatedImageFilename').value = data.filename;
-                document.getElementById('generatedImagePreview').style.display = 'flex';
-            } else {
-                alert('Failed to generate image. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error generating image:', error);
-            alert('Something went wrong!');
-        }
+    const prompt = document.getElementById('imagePrompt').value;
+    if (!prompt.trim()) {
+        alert('Please enter a prompt!');
+        return;
     }
+
+    try {
+        const response = await fetch('/generate-image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.getElementById('generatedImagePreview').src = data.image.url;       // Use the Cloudinary URL
+            document.getElementById('generatedImageFilename').value = data.image.url;    // Store full URL in hidden input
+            document.getElementById('generatedImagePreview').style.display = 'flex';
+        } else {
+            alert('Failed to generate image. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error generating image:', error);
+        alert('Something went wrong!');
+    }
+}
+
 
 
 </script>

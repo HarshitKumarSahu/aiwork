@@ -6,7 +6,8 @@
         <% post.forEach(elem => { %>
             <div class="card">
                 <div>
-                    <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt="">
+                    <!-- <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt=""> -->
+                    <img class="profileImage" src="<%= elem.image?.url || '/images/profileFallbacKImg/1.jpg' %>" alt="">
                 </div>
                 <h4>@<%= elem.user.username %></h4>
                 <h3><%= elem.title %></h3>

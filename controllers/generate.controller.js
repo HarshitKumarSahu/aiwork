@@ -1,6 +1,8 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const { cloudinary } = require('../utils/cloudConfig');
+const streamifier = require('streamifier');
 require('dotenv').config();
 
 const clipdropApiKey = process.env.CLIPDROP_API_KEY;
@@ -25,10 +27,27 @@ exports.generateImage = async (req, res) => {
     );
 
     const filename = `generated_${Date.now()}.png`;
-    const filePath = path.join(uploadsDir, filename);
-    fs.writeFileSync(filePath, response.data);
 
-    res.json({ success: true, filename });
+    
+
+    const uploadFromBuffer = (buffer) => {
+      return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream({ folder: "AI_WORK" }, (error, result) => {
+          if (result) resolve(result);
+          else reject(error);
+        });
+        streamifier.createReadStream(buffer).pipe(stream);
+      });
+    };
+
+    const result = await uploadFromBuffer(response.data);
+    res.json({ success: true, image: { url: result.secure_url, filename: result.public_id } });
+
+    
+    // const filePath = path.join(uploadsDir, filename);
+    // fs.writeFileSync(filePath, response.data);
+    // res.json({ success: true, filename });
+
   } catch (error) {
     console.error("Error generating image:", error.response?.data || error.message);
     console.log(error)

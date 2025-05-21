@@ -6,8 +6,9 @@
         <div class="profileHead">
             <div class="top">
                 <div class="profileimg">
-                    <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : "/images/profileFallbacKImg/1.jpg", %>" 
-                    alt="Profile Image">
+                    <!-- <img src="<%= user.profileImage ? '/images/uploads/' + user.profileImage : "/images/profileFallbacKImg/1.jpg", %>"  -->
+                    <img src="<%= user.profileImage ? user.profileImage : '/images/profileFallbacKImg/1.jpg' %>" alt="Profile Image">
+                    <!-- alt="Profile Image"> -->
                     <div class="uploadicon">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </div>
@@ -28,7 +29,9 @@
                 <% user.post.forEach(elem => { %>
                     <div class="card">
                         <div>
-                            <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt="">
+                            <!-- <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt=""> -->
+                            <img class="profileImage" src="<%= elem.image?.url || '/images/profileFallbacKImg/1.jpg' %>" alt="">
+
                         </div>
                         <h3><%= elem.title %></h3>
                         <p><%= elem.description %></p>
@@ -50,16 +53,46 @@
             document.querySelector("#uploadform").submit();
         })
 
+        // document.querySelectorAll('.downloadBtn').forEach((btn, index) => {
+        //     btn.addEventListener('click', function () {
+        //         const imageUrl = document.querySelectorAll('.profileImage')[index].src;
+        //         const a = document.createElement('a');
+        //         a.href = imageUrl;
+        //         a.download = `AI.WORK_image_${index + 1}.jpg`; // Unique filename for each image
+        //         document.body.appendChild(a);
+        //         a.click();
+        //         document.body.removeChild(a);
+        //     });
+        // });
+
         document.querySelectorAll('.downloadBtn').forEach((btn, index) => {
-            btn.addEventListener('click', function () {
-                const imageUrl = document.querySelectorAll('.profileImage')[index].src;
-                const a = document.createElement('a');
-                a.href = imageUrl;
-                a.download = `AI.WORK_image_${index + 1}.jpg`; // Unique filename for each image
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            });
-        });
+  btn.addEventListener('click', async function () {
+    try {
+      const imageUrl = document.querySelectorAll('.profileImage')[index].src;
+      
+      // Fetch image as blob
+      const response = await fetch(imageUrl, { mode: 'cors' });
+      const blob = await response.blob();
+      
+      // Create local URL for blob
+      const blobUrl = URL.createObjectURL(blob);
+      
+      // Create temporary link to trigger download
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = `AI.WORK_image_${index + 1}.jpg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      
+      // Release the blob URL
+      URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Failed to download image. Please try again.');
+    }
+  });
+});
+
     </script>
 <%- include('partials/footer') %>
