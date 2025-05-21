@@ -6,7 +6,7 @@
             <div class="left">
                 <!-- Image preview container -->
                 <div id="imagePreviewContainer">
-                    <h4>Generated Image Preview:</h4>
+                    <h4>Generated Image Preview:  <div class="loader" style="display: none;"></div></h4>
                     <div class="imgcontainer">
                         <img id="generatedImagePreview" src="" alt="Generated Image" style="display: none;">
                     </div>
@@ -70,12 +70,14 @@
     //     }
     // }
 
-    async function generateImage() {
+async function generateImage() {
     const prompt = document.getElementById('imagePrompt').value;
+    const loadingMessage = document.getElementsByClassName('loader')[0];
     if (!prompt.trim()) {
         alert('Please enter a prompt!');
         return;
     }
+    loadingMessage.style.display = 'flex';
 
     try {
         const response = await fetch('/generate-image', {
@@ -92,11 +94,14 @@
             document.getElementById('generatedImagePreview').src = data.image.url;       // Use the Cloudinary URL
             document.getElementById('generatedImageFilename').value = data.image.url;    // Store full URL in hidden input
             document.getElementById('generatedImagePreview').style.display = 'flex';
+            loadingMessage.style.display = 'none';
         } else {
             alert('Failed to generate image. Please try again.');
+            loadingMessage.style.display = 'none';
         }
     } catch (error) {
         console.error('Error generating image:', error);
+        loadingMessage.style.display = 'none';
         alert('Something went wrong!');
     }
 }
