@@ -1,3 +1,8 @@
+if(process.env.NODE_ENV != "production") {
+  require('dotenv').config();
+}
+
+
 // Basic requires
 var createError = require('http-errors');
 var express = require('express');
@@ -7,6 +12,7 @@ var logger = require('morgan');
 
 // Session and Passport requires
 const expressSession = require("express-session");
+const MongoStore = require('connect-mongo');
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -27,11 +33,29 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Mongo Store
+const store = MongoStore.create({
+  mongoUrl: process.env.ATLAS_DB_URL,
+  crypto: {
+    secret: "hello world"
+  },
+  touchAfter: 24 * 3600,
+})
+store.on("error", () => {
+  console.log("error in mongo session", err)
+})
+
 // Express Session
 app.use(expressSession({
+  store: store,
+  secret: "hello world",
   resave: false,
   saveUninitialized: false,
-  secret: "hello world"
+  cookies : {
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days lifetime from now
+    maxAge: 7 * 24 * 60 * 60 * 1000, // Alternative to `expires`: 7 days lifetime
+    httpOnly: true   // Prevents client-side access
+  }
 }));
 
 // Passport Config
