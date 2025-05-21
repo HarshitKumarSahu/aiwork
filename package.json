@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "v23.7.0"
+  },
   "name": "aiwork",
   "version": "0.0.0",
   "private": true,
