@@ -19,17 +19,46 @@
 </div>
 
 <script>
+    // document.querySelectorAll('.downloadBtn').forEach((btn, index) => {
+    //     btn.addEventListener('click', function () {
+    //         const imageUrl = document.querySelectorAll('.profileImage')[index].src;
+    //         const a = document.createElement('a');
+    //         a.href = imageUrl;
+    //         a.download = `AI.WORK_image_${index + 1}.jpg`; // Unique filename for each image
+    //         document.body.appendChild(a);
+    //         a.click();
+    //         document.body.removeChild(a);
+    //     });
+    // });
     document.querySelectorAll('.downloadBtn').forEach((btn, index) => {
-        btn.addEventListener('click', function () {
-            const imageUrl = document.querySelectorAll('.profileImage')[index].src;
-            const a = document.createElement('a');
-            a.href = imageUrl;
-            a.download = `AI.WORK_image_${index + 1}.jpg`; // Unique filename for each image
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        });
-    });
+  btn.addEventListener('click', async function () {
+    try {
+      const imageUrl = document.querySelectorAll('.profileImage')[index].src;
+      
+      // Fetch image as blob
+      const response = await fetch(imageUrl, { mode: 'cors' });
+      const blob = await response.blob();
+      
+      // Create local URL for blob
+      const blobUrl = URL.createObjectURL(blob);
+      
+      // Create temporary link to trigger download
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = `AI.WORK_image_${index + 1}.jpg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      
+      // Release the blob URL
+      URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Failed to download image. Please try again.');
+    }
+  });
+});
+
 </script>
 
 
