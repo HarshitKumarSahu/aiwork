@@ -1,21 +1,21 @@
 <%- include('partials/header') %>
 
 <div class="profile">
-<div class="profileArtContent">
-    <div class="cards">
-        <% post.forEach(elem => { %>
-            <div class="card">
-                <div>
-                    <!-- <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt=""> -->
-                    <img class="profileImage" src="<%= elem.image?.url || '/images/profileFallbackImg/1.jpg' %>" alt="">
+    <div class="profileArtContent">
+        <div class="cards">
+            <% post.forEach(elem => { %>
+                <div class="card">
+                    <div>
+                        <!-- <img class="profileImage" src="/images/uploads/<%=elem.image%>" alt=""> -->
+                        <img class="profileImage" src="<%= elem.image?.url || '/images/profileFallbackImg/1.jpg' %>" alt="">
+                    </div>
+                    <h4>@<%= elem.user.username %></h4>
+                    <h3><%= elem.title %></h3>
+                    <button class="downloadBtn" style="width: 100%;">Download</button>
                 </div>
-                <h4>@<%= elem.user.username %></h4>
-                <h3><%= elem.title %></h3>
-                <button class="downloadBtn" style="width: 100%;">Download</button>
-            </div>
-        <% }); %>
+            <% }); %>
+        </div>
     </div>
-</div>
 </div>
 
 <script>

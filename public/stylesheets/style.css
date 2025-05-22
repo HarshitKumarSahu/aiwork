@@ -937,7 +937,7 @@ nav .menuicon {
 }
 .profileArtContent .cards {
   height: 100%;
-  column-width: 245px; /*fix  250*/
+  column-width: 235px; /*fix  250*/
 }
 .profileArtContent .cards .card {
   width: 100%;
